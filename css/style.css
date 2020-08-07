@@ -1,0 +1,256 @@
+*{
+    margin: 0;
+    padding: 0;
+  
+    box-sizing: border-box;
+  
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.display-block{
+    display: block !important; 
+}
+.display-none{
+    display: none !important;
+}
+
+.application-tittle{
+    background-color: #ededed;
+    padding: 15px;
+    border-bottom: 1px solid gainsboro;
+}
+.application-tittle h1{
+    font-size: 50px;
+    text-align: center;
+    margin-bottom:50px ;
+}
+.application-tittle button{
+    background-color: royalblue;
+    padding: 7px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    color: white;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+}
+.application-tittle button a{
+    text-decoration: none;
+    color: white;
+}
+
+.user-list{
+    width: 30%;
+    border-right: 1px solid ;
+    display: inline-block;
+    /* background-color: #ededed; */
+}
+.user-list-heading{
+    border-bottom: 1px solid;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+.user:hover{
+    background-color: #3e4e80;
+    color: white;
+}
+.user{
+    padding: 8px 20px;
+    border-bottom: 1px solid gainsboro;
+}
+.user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid;
+
+}
+.user-font{
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid;
+    padding: 8px;
+    font-size: 35px;
+    color: #d9d9d9;
+}
+.user p {
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px 0px 0 20px;
+    font-size: 18px;
+}
+.display-area{
+    display: inline-flex;
+    vertical-align: top;
+    width: 65%;
+    margin-top: 50px;
+}
+/* login form css */
+.login-form{
+    display: none;
+    width: 35%;
+    margin: 0 auto;
+    /* background: aliceblue; */
+    padding: 40px;
+}
+.login-form label{
+    display: block;
+    font-size: 16px;
+    padding: 25px 0 5px;
+    color: royalblue;
+}
+.login-form input,
+#user-profession{
+    font-size: 18px;
+    padding: 3px 10px;
+    width: 100%;
+    height: 35px;
+    border: 0;
+    border-bottom: 1px solid gainsboro;
+    text-align: center;
+   
+}
+.btn-parent{
+    display: block;
+}
+.btn{
+    background-color: royalblue;
+    padding: 7px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    color: white;
+    margin: 0 auto;
+    display: inline-block;
+    margin-top: 20px;
+}
+/* first user */
+.firstUserParent{
+    display: none;
+}
+.secondUserParent{
+    display: none;
+}
+.thirdUserParent{
+    display: none;
+}
+.fourthUserParent{
+    display: none;
+}
+.fifthUserParent{
+    display: none;
+}
+
+.firstUserParent div,
+.secondUserParent div,
+.thirdUserParent div,
+.fourthUserParent div,
+.fifthUserParent div
+{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin: 50px;
+}
+.firstUserParent img,
+.secondUserParent img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+.thirdUserParent i,
+.fourthUserParent i,
+.fifthUserParent i{
+    font-size: 100px;
+    border-radius: 50%;
+    border: 1px solid gainsboro;
+    height: 150px;
+    width: 150px;
+    color: gainsboro;
+    padding-top: 20px;
+    margin: 10px;
+}
+.profile-font{
+    font-size: 100px;
+    border-radius: 50%;
+    border: 1px solid gainsboro;
+    height: 150px;
+    width: 150px;
+    color: gainsboro;
+    padding-top: 20px;
+    margin: 10px;
+    text-align: center;
+    margin-left: 70px;
+}
+.search{
+    width: 100%;
+    height: 40px;
+    font-size: 19px;
+    padding: 3px 20px;
+    border-radius: 20px;
+    border: 1px solid;
+    outline: none
+}
+.userProfile{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 30px;
+    display: none;
+}
+.my-profile{
+    display: none;
+    margin:0 auto;
+    width: 100%;
+    text-align: center;
+}
+.my-profile div{
+    margin-top: 50px;
+    line-height: 30px;
+}
+.my-profile img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+.active-css{
+    background-color: #3e4e80;
+    color: white;
+}
+.user-edit:hover{
+    background-color: #ededed;
+}
+.user-edit{
+    font-size: 15px;
+    float: right;
+    border: 1px solid gainsboro;
+    width: 35px;
+    height: 35px;
+    padding-top: 10px;
+}
+.save-btn{
+    margin-left: 10px;
+}
+.edit-input{
+    font-size: 18px;
+    padding: 3px 10px;
+    width: 50%;
+    height: 35px;
+    border: 0;
+    border-bottom: 1px solid gainsboro;
+    margin-top: 10px;
+    text-align: center;
+}
+.delet-user{
+   display: none !important;
+    float: right;
+    margin-top: 20px;
+}
+.delet-font-display{
+    display: block !important;
+}
+#user-profession{
+    font-size: 17px;
+
+}
