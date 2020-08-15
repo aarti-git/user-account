@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 400px;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+</style>
+</head>
+<body>
+
+<h2>My Phonebook</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<div class="user">
+  <p>aarti</p>
+  <p>yogesh</p>
+  <p>hii</p>
+  <p>hellow</p>
+</div>
+<script>
+function myFunction() {
+    var input, filter, name,user, a, i, txtValue;
+    input = document.getElementById("myInput");
+    user = document.querySelector(".user");
+    filter = input.value.toUpperCase();
+    UsernameList = user.getElementsByTagName("p");
+
+    for (i = 0; i < UsernameList.length; i++) {
+    txtValue = UsernameList[i].textContent || UsernameList[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        UsernameList[i].style.display = "";
+    } else {
+        UsernameList[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>

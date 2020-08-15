@@ -41,7 +41,7 @@
 
 .user-list{
     width: 30%;
-    border-right: 1px solid ;
+    border-right: 1px solid gainsboro;
     display: inline-block;
     /* background-color: #ededed; */
 }
@@ -59,11 +59,12 @@
     padding: 8px 20px;
     border-bottom: 1px solid gainsboro;
 }
-.user img{
+.user-img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     border: 1px solid;
+    object-fit: cover;
 
 }
 .user-font{
@@ -73,6 +74,7 @@
     padding: 8px;
     font-size: 35px;
     color: #d9d9d9;
+    display: none;
 }
 .user p {
     display: inline-block;
@@ -182,14 +184,29 @@
     text-align: center;
     margin-left: 70px;
 }
+.p-img-editPage{
+    height: 200px;
+    width: 200px;
+    padding-top: 0px;
+    position: relative;
+}
 .search{
-    width: 100%;
+    width: 300px;
     height: 40px;
     font-size: 19px;
     padding: 3px 20px;
     border-radius: 20px;
     border: 1px solid;
     outline: none
+}
+.search-bar{
+    position: relative;
+}
+.search-bar i {
+    position: absolute;
+    top: 13px;
+    left: 270px;
+    color: royalblue;
 }
 .userProfile{
     margin: 0 auto;
@@ -198,6 +215,7 @@
     font-size: 20px;
     line-height: 30px;
     display: none;
+    position: relative;
 }
 .my-profile{
     display: none;
@@ -253,4 +271,34 @@
 #user-profession{
     font-size: 17px;
 
+}
+.profile-edit{
+    font-size: 20px;
+    border: 1px solid;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    padding-top: 7px;
+    color: white;
+    position: absolute;
+    top: 166px;
+    right: 417px;
+    background-color: black;
+    visibility: hidden;
+}
+.profile-img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 20px;
+    display: none;
+}
+.font-input{
+    position: absolute;
+    top: 6px;
+    left: -18px;
+    opacity: 0;
+    width: 100px;
 }
