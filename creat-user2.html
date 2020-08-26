@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&amp;display=swap" rel="stylesheet">
     <title>creat user 2</title>
 </head>
 
@@ -211,7 +210,8 @@
             Ulist.innerHTML =
                 "<img src='" + obj.img + "' class='user-img'/>" +
                 // "<i class='fa fa-user user-font' aria-hidden='true'></i>" +
-                "<p id='user-display-name'>" + obj.name + "</p>";
+                "<p id='user-display-name'>" + obj.name + "</p>"+
+                "<i class='fas fa-angle-down font-down-angle' onclick='accountSetting()'></i>";
             Ulist.classList.add("user");
             userList.style.height = "550px";
             parentUserList.append(Ulist);
@@ -337,6 +337,10 @@
             }
         }
 
+        // accountSetting list
+        function accountSetting(){
+            
+        }
 
     </script>
 </body>

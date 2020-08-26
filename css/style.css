@@ -55,9 +55,13 @@
     background-color: #3e4e80;
     color: white;
 }
+.user:hover{
+
+}
 .user{
     padding: 8px 20px;
     border-bottom: 1px solid gainsboro;
+    position: relative;
 }
 .user-img{
     width: 50px;
@@ -91,7 +95,7 @@
 /* login form css */
 .login-form{
     display: none;
-    width: 35%;
+    width: 40%;
     margin: 0 auto;
     /* background: aliceblue; */
     padding: 40px;
@@ -236,9 +240,7 @@
     background-color: #3e4e80;
     color: white;
 }
-.user-edit:hover{
-    background-color: #ededed;
-}
+
 .user-edit{
     font-size: 15px;
     float: right;
@@ -301,4 +303,14 @@
     left: -18px;
     opacity: 0;
     width: 100px;
+}
+/* .font-down-angle .user:hover{
+    display: block;
+} */
+.font-down-angle{
+    position: absolute;
+    right: 23px;
+    top: 28px;
+    font-size: 22px;
+    display: none;
 }
