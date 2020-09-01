@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>string oprations</title>
+</head>
+
+<body>
+    <h1>Make addition of numbers in the string</h1>
+    <p>Ex: Aarti12Yogesh108</p>
+    <button onclick="numAddition()">click</button>
+    <p id="add"></p>
+
+    <h1>Make addition of numbers group in the string</h1>
+    <p>Ex: Aarti12Yogesh108</p>
+    <button onclick="numGroupAddition()">click</button>
+    <p id="GroupAddition"></p>
+
+    <h1>remove no from string</h1>
+    <p>abcd34ef98ghi</p>
+    <button onclick="noRemove()">click</button>
+    <p id="remove"></p>
+
+    <script>
+        // function noAddition() {
+        //     var str = "Aarti12Yogesh108";
+        //     matches = str.match(/\d+/g);
+        //     var x = parseInt(matches[0]);
+        //     var x1 = parseInt(matches[1]);
+        //     document.getElementById("add").innerHTML = x + x1;
+        // } 
+
+        function numAddition() {
+            var str = "Aarti12Yogesh108";
+            var sum = 0;
+            for (i = 0; i < str.length; i++) {
+                var v1 = str[i];
+                if (isNaN(v1) == false) {
+                    arr.push(v1);
+                    sum += parseInt(v1);
+                }
+            }
+            document.getElementById("add").innerHTML = sum;
+        }
+
+        function numGroupAddition() {
+            var str = "Aarti12Yogesh108";
+            var arr = [];
+            var arryStr = "";
+            var arryStr2 = "";
+            var p = "";
+
+            for (i = 0; i < str.length; i++) {
+                var v1 = str[i];
+                p = v1;
+                if (isNaN(v1) == false) {
+                    arr.push(v1);
+                    // if(isNaN(p) == false && isNaN(v1) == false ){
+                    //     arryStr += v1;
+                    // }else{
+                    //     arryStr2 += v1;
+                    // }
+                    // arryStr = arr.join('');
+                    // if(isNaN(v1) == false && p !== ""){
+                    //     arryStr+= v1; 
+
+                    // }else{
+                    //     arryStr2+= v1; 
+                    // }
+
+                    arryStr += v1;
+                }
+                else if (isNaN(p) == false && isNaN(v1) == true && p !== "") {
+                    // arryStr = arr.join(',');
+                    arryStr += ",";
+                }
+            }
+            document.getElementById("GroupAddition").innerHTML = arryStr;
+        }
+
+
+
+        // remove numbers
+        function noRemove() {
+            var str = "abcd34ef98ghi";
+            var x = '';
+            for (i = 0; i < str.length; i++) {
+                var v1 = str[i];
+                if (isNaN(v1) == false) {
+                    if (x == "") {
+                        x = str.replace(v1, '');
+                    } else {
+                        x = x.replace(v1, '');
+                    }
+                }
+            }
+            document.getElementById("remove").innerHTML = x;
+        }
+
+    </script>
+</body>
+
+</html>

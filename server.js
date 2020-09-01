@@ -1,7 +1,7 @@
-
 var http = require('http');
 var mysql = require('mysql');
 var url = require('url');
+const { AsyncLocalStorage } = require('async_hooks');
 // console.log(url);
 
 var connection = mysql.createConnection({
@@ -22,33 +22,41 @@ connection.connect(function (err) {
 });
 
 http.createServer(function (req, res) {
-    res.setHeader("Content-Type", "text/html")
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:1100')
+    res.setHeader("Content-Type", "application/json")
     const route = url.parse(req.url, true);
 
     if (route.pathname == '/') {
-        res.write(`
-            <form action="http://localhost:2000/submitData" method="GET" style="display:table-caption">
-                <label>Name</label>
-                <input type="text" name="firstname"/>
-                <label>last Name</label>
-                <input type="text" name="lastname"/>
-                <label>email</label>
-                <input type="text" name="email"/>
-                <button>Submit</button>
-            </form>
-  `);
+        res.write("this is node server");
+        // res.write(`
+        //     <form action="http://localhost:2000/submitData" method="GET" style="display:table-caption">
+        //         <label>Name</label>
+        //         <input type="text" name="firstname"/>
+        //         <label>last Name</label>
+        //         <input type="text" name="lastname"/>
+        //         <label>email</label>
+        //         <input type="text" name="email"/>
+        //         <button>Submit</button>
+        //     </form>`);
     }
-    else if (route.pathname == '/submitData') {
+     if (route.pathname == '/submitData') {
         const Udata = route.query;
-        res.write("<h2 style='color:green'>data save successfully !</h2>");
-        console.log(Udata, Udata.firstname + " " + Udata.lastname + "" + Udata.email);
-        connection.query("insert into users (firstname, lastname, email, phone,job, pwd, image) values \
-        ('" + Udata.firstname + "', '" + Udata.lastname + "' , '" + Udata.email + "' , '0000', 'student', '0000', 'image')",
-            function (error, results, fields) {
-                if (error) throw error;
-                // res.send(results);
-                console.log('Record Inserted!');
-            });
+        const str = "insert into users (name, email, phone ,job, password, image) values ('" + Udata.name + "', '" + Udata.email + "' ,'" + Udata.phone + "','" + Udata.job + "','" + Udata.password + "', '" + Udata.image + "')"
+
+        connection.query(str, function (error, results, fields) {
+            if (error) {
+                res.write("{ responce: false }");
+                res.end();
+                return
+            };
+            // res.send(results);
+            res.write(JSON.stringify({ responce: true }));
+            console.log('Record Inserted!');
+            alert("data submited successfully !! ")
+            res.end();
+        });
+
+        return;
     }else{
         res.write("<h2 style='color:red'>erroe</h2>");  
     }

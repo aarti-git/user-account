@@ -1,6 +1,3 @@
-//  <head>
-//     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-// </head> 
 var mysql = require('mysql');
 const express = require('express');
 var app = express();
@@ -46,26 +43,63 @@ app.get("/", function (req, res) {
     res.end(`
         <form action="http://localhost:3000/submit" onsubmit="submitData(event, this)"  method="GET" style="display:table-caption" id="form">
             <label>Name</label>
-            <input type="text" name="firstname" id="fname"/>
+            <input type="text" name="firstname"/>
             <label>last Name</label>
-            <input type="text" name="lastname" id="lname"/>
+            <input type="text" name="lastname"/>
             <label>email</label>
-            <input type="text" name="email" id="email"/>
+            <input type="text" name="email"/>
+            <label>mobile No</label>
+            <input type="number" name="phone"/>
             <button>Submit</button>
         </form>
 
         <script>
             var form = document.querySelector("form");
-            var userfirstName = document.getElementById("fname");
-            var userlastName = document.getElementById("lname");
-            var useremail = document.getElementById("email");
+
             function submitData(e, el){
+                var button = document.querySelector("button");
+                button.innerHTML = "submiting.."
                 e.preventDefault();
                 const url = el.action 
-                var querystring = "?firstname="+ userfirstName.value +"&lastname="+ userlastName.value + "&email="+ useremail.value;
-                fetch(url + querystring).then(alert("your data save successfully !"));
-                form.reset();
+
+                urlString();
+                var x = urlString();
+                console.log(x)
+                fetch(url + x)
+                .then(function(res){
+                    alert("data save successfully !")
+                    form.reset();
+                    button.innerHTML = "submit";
+                })
+                .catch(function(e){
+                    console.log("something is wrong!", e)
+                    alert("something is wrong !");
+                    button.innerHTML = "submit";
+                })
+
             }
+
+            function urlString(){
+                var input = document.querySelectorAll("input");
+                var str ="";
+                var querystring;
+                for(i=0; i < input.length; i++){
+                    var item = input[i];
+                    var name = item.name;
+                    var value = item.value;
+                    if(i == 0){
+                        querystring = "?" + name + "=" + value ;
+                    }
+                    else{
+                        querystring = "&" + name + "=" + value ; 
+                    }
+                   
+                    str += querystring ;
+                }
+                 return str;
+            }
+
+
         </script>
     `)
 })
@@ -75,16 +109,17 @@ app.get('/submit', function (req, res) {
     const route = url.parse(req.url, true)
     const Udata = route.query;
     console.log(Udata, Udata.firstname + " " + Udata.lastname + "" + Udata.email);
-    connection.query("insert into users (firstname, lastname, email, phone,job, pwd, image) values \
-     ('" + Udata.firstname + "', '" + Udata.lastname + "' , '" + Udata.email + "' , '0000', 'student', '0000', 'image')",
-        function (error, results, fields) {
-            if (error) throw error;
-            res.send(results)
-            console.log('Record Inserted!');
-        });
+    var string = "insert into users (firstname, lastname, email, phone,job, pwd, image)values\
+    ('" + Udata.firstname + "', '" + Udata.lastname + "' , '" + Udata.email + "' , '" + Udata.phone + "','student', '0000', 'image')";
+
+    connection.query(string, function (error, results, fields) {
+        if (error) throw error;
+        res.send(results)
+        console.log('Record Inserted!');
+    });
 });
 
-app.get('/conect/:datatype/done', function (req, res) {
-    res.write("hiii ");
-    res.end(req.params.datatype);
-});
+// app.get('/conect/:datatype/done', function (req, res) {
+//     res.write("hiii ");
+//     res.end(req.params.datatype);
+// });

@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&amp;display=swap"
+        rel="stylesheet">
     <title>creat user 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -53,7 +55,7 @@
 
         </section>
         <section class="login-form">
-            <div>
+            <form action="http://localhost:2000/submitData" method="GET" onsubmit="submitData(event, this)">
                 <h2>Login</h2>
                 <label>Name</label>
                 <input type="text" name="name" id="user-name" />
@@ -61,13 +63,13 @@
                 <input type="text" name="email" id="user-email" />
 
                 <label>Profile Pic</label>
-                <input type="file" onchange="editProfileImg('.profile-img','.profile-img-input')"
+                <input type="file" name="image" onchange="editProfileImg('.profile-img','.profile-img-input')"
                     class="profile-img-input"><br>
                 <img src="" class="profile-img">
 
                 <label>profession</label>
                 <!-- <input type="text" name="" id="user-profession" /> -->
-                <select id="user-profession">
+                <select id="user-profession" name="job">
                     <option>select your profession</option>
                     <option>Student</option>
                     <option>web Devloper</option>
@@ -77,14 +79,15 @@
                     <option>Acter</option>
                 </select>
                 <label>Contact No</label>
-                <input type="number" id="user-contact">
+                <input type="number" name="phone" id="user-contact">
                 <label>password</label>
                 <input type="password" name="password" id="user-password" />
                 <div class="btn-parent">
-                    <button class="btn" id="submit" onclick="CreatUserList()">submit</button>
+                    <button class="btn" id="submit" >submit</button>
+                    <!-- onclick="CreatUserList()" -->
                     <button class="btn" onclick="goBack()">Go Back</button>
                 </div>
-            </div>
+            </form>
         </section>
         <!-- <div class="userProfile"></div> -->
 
@@ -114,6 +117,54 @@
             myprofile.style.display = "none";
             loginForm.style.display = "block";
         }
+
+        // onsubmit
+        var form = document.querySelector("form");
+
+        function submitData(e, el) {
+            var button = document.querySelector("#submit");
+            button.innerHTML = "submiting.."
+            e.preventDefault();
+            const url = el.action
+
+            urlString();
+            var x = urlString();
+            console.log(x)
+            serverUrl = url + x;
+            $.get(serverUrl,function(data,status){
+                    alert("data save successfully !")
+                    form.reset();
+                    button.innerHTML = "submit";
+                })
+                .fail(function (e) {
+                    console.log("something is wrong!", e)
+                    alert("something is wrong !");
+                    button.innerHTML = "submit";
+                })
+
+        }
+
+        function urlString() {
+            var input = document.querySelectorAll(".login-form input");
+            var str = "";
+            var querystring;
+            for (i = 0; i < input.length; i++) {
+                var item = input[i];
+                var name = item.name;
+                var value = item.value;
+                if (i == 0) {
+                    querystring = "?" + name + "=" + value;
+                }
+                else {
+                    querystring = "&" + name + "=" + value;
+                }
+
+                str += querystring;
+            }
+            return str;
+        }
+
+
 
         // goBack button
         function goBack(x) {
@@ -210,7 +261,7 @@
             Ulist.innerHTML =
                 "<img src='" + obj.img + "' class='user-img'/>" +
                 // "<i class='fa fa-user user-font' aria-hidden='true'></i>" +
-                "<p id='user-display-name'>" + obj.name + "</p>"+
+                "<p id='user-display-name'>" + obj.name + "</p>" +
                 "<i class='fas fa-angle-down font-down-angle' onclick='accountSetting()'></i>";
             Ulist.classList.add("user");
             userList.style.height = "550px";
@@ -338,8 +389,8 @@
         }
 
         // accountSetting list
-        function accountSetting(){
-            
+        function accountSetting() {
+
         }
 
     </script>

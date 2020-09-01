@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>string oprations</title>
+</head>
+
+<body>
+    <h1>Find similar letters in the given string and concat them</h1>
+    <p>Ex. abccdefgg</p>
+    <button onclick="similarLater()">click</button>
+    <p id="ans"></p>
+
+    <h1>Find similar letters and count</h1>
+    <p>Ex. abcccdefgg</p>
+    <button onclick="trippleLatter()">click</button>
+    <p id="ans1"></p>
+
+    <h1>Find similar letters and count</h1>
+    <p>Ex. abacdeefgabcee</p>
+    <button onclick="lattercount()">click</button>
+    <p id="ans2"></p>
+
+    <h1>Find similar letters and count</h1>
+    <p>Ex. abacdeefgabcee</p>
+    <button onclick="lattercount2()">click</button>
+    <p id="ans4"></p>
+
+
+    <script>
+        function similarLater() {
+            var text = "abccdefgg";
+            var previous = "";
+            var x = '';
+            var ans = document.getElementById("ans");
+            for (i = 0; i < text.length; i++) {
+                var v1 = text[i];
+                if (v1 === previous) {
+                    console.log(v1 + previous);
+                    x += v1 + previous;
+                }
+                previous = v1;
+                ans.innerHTML = x;
+            }
+        }
+        // str = abcccdefgg
+        function trippleLatter() {
+            var text = "abcccdefgg";
+            var previous = "";
+            var x = '';
+            var ans = document.getElementById("ans1");
+            for (i = 0; i < text.length; i++) {
+                var v1 = text[i];
+                for(j =0;j<text.length;j++){
+                        var v2 = text[j];
+                        if(v1 == v2){
+                            console.log(v2);
+                            x += v2 ;
+                        }
+                        previous=v2;  
+                }
+                ans.innerHTML = x;
+            }
+
+        }
+        // var str = "abacdeefgabcee";
+        function lattercount() {
+            var str = "abacdeefgabcee";
+            let loopValue = "";
+            var arry = [];
+            let count = 0;
+            var strLength = str.length - 1;
+            var x;
+            for (i = 0; i < str.length; i++) {
+                var v1 = str[i];
+                for (k = 0; k < arry.length; k++) {
+                    var p = arry[k];
+                    if (v1 == p) {
+                        x = true;
+                        break;
+                    } else {
+                        x = false;
+                    }
+                }
+                arry.push(v1);
+                if (loopValue == "" || x == false) {
+
+                    for (j = 0; j < str.length; j++) {
+                        var v2 = str[j];
+                        if (v1 === v2) {
+                            console.log(v2);
+                            count++;
+                            var a = v2;
+                        }
+                        if (j >= strLength && count !== 1) {
+                            loopValue += "'" + a + "' " + count + " times , ";
+
+                        }
+                    }
+                }
+                count = 0;
+                document.getElementById("ans2").innerHTML = loopValue;
+            }
+        }
+
+        // 
+        function lattercount2() {
+            var str = "abacdeefgabcee";
+            let loopValue = "";
+            var arry = [];
+            let count = 0;
+            var strLength = str.length - 1;
+            var x;
+            for (i = 0; i < str.length; i++) {
+                var v1 = str[i];
+                for (k = 0; k < arry.length; k++) {
+                    var p = arry[k];
+                    if (v1 == p) {
+                        x = true;
+                        break;
+                    } else {
+                        x = false;
+                    }
+                }
+                arry.push(v1);
+                if (loopValue == "" || x == false) {
+
+                    for (j = 0; j < str.length; j++) {
+                        var v2 = str[j];
+                        if (v1 === v2) {
+                            console.log(v2);
+                            count++;
+                            var a = v2;
+                        }
+                        if (j >= strLength && count !== 1) {
+                            loopValue += a + count;
+
+                        }
+                    }
+                }
+                count = 0;
+                document.getElementById("ans4").innerHTML = loopValue;
+            }
+        }
+    </script>
+</body>
+
+</html>
