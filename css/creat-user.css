@@ -1,0 +1,211 @@
+@import "font.css";
+*{    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:"Roboto";
+}
+.application-layout{
+    width: 100%;
+}
+.logo-add{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo-add button{
+    font-size: 100px;
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    border: 1px solid gainsboro;
+    border-radius: 50%;
+    text-align: center;
+    color: gainsboro;
+    background-color: white;
+    outline: none;
+    font-weight: 100; 
+  }
+.logo-add p{
+    color: gainsboro;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 200;
+  }
+
+/* login form */
+#overlay{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.login-form{
+    display: none;
+    width: 28%;
+    margin: 0 auto;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 10px 25px rgba(0,0,0,.9);
+    border-radius: 5px;
+    background-color: white;
+}
+.login-form h2{
+    text-align: center;
+    margin: 0px 0px 40px;
+    font-size: 30px;
+    font-weight: 400;
+}
+.user-fill{
+    position: relative;
+}
+
+.lable-focus{
+    top: -20px !important;
+    left: 0px !important;
+    color: #0804ff !important;
+    font-size: 14px !important;
+    /* background-color: transparent; */
+}
+
+.login-form input,
+#user-profession{
+    font-size: 16px;
+    padding: 3px 0px 0;
+    margin: 15px 0px;
+    width: 100%;
+    height: 35px;
+    border: 0;
+    border-bottom: 1px solid;
+    outline: none;
+    font-weight: 200;
+}
+#form-label{
+    position: absolute;
+    top: 5px;
+    left: 0px ;
+    pointer-events: none;
+    padding:20px 0 10px ;
+    font-size: 16px;
+    transition: .5s;
+    font-weight: 200;
+}
+/* .login-form input:valid ~ #form-label,
+.login-form input:focus ~ #form-label{
+  top: -20px;
+  left: 0px;
+  color: #0804ff;
+  font-size: 14px;
+  background-color: transparent;
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important; 
+    -webkit-text-fill-color:black;
+}
+
+.img-lable{
+    border-bottom: 1px solid black;
+    width: 100%;
+    color: black;
+    /* margin-top: 20px; */
+    font-size: 18px;
+}
+
+.btn{
+    background-color: royalblue;
+    padding: 7px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    color: white;
+    margin: 0 auto;
+    display: inline-block;
+    margin-top: 20px;
+}
+.profile-img-input{
+    opacity: 0;
+}
+.profile-img{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    display: none;
+}
+
+.toast-message{
+    visibility: hidden;
+    border: 1px solid;
+    padding: 5px 10px;
+    width: 300px;
+    height: 60px;
+    color: white;
+    font-weight: 600;
+    background-color: green;
+    border-radius: 5px;
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    line-height: 25px;
+    font-weight: 400;
+}
+.errorcss{
+    background-color: red !important;
+}
+.toast-message.show{
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation-iteration-count: 1;
+}
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 20px; opacity: 1;}
+  }
+  
+@keyframes fadeout {
+    from {right: 10px; opacity: 1;}
+    to {right: 0; opacity: 0;}
+} 
+ 
+.remove-form{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.remove-form button:hover{
+    color: black;
+    background-color: gainsboro;
+    box-shadow: 0 1px 6px black;
+}
+.remove-form button{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid gainsboro;
+    color: gray;
+    cursor: pointer;
+    border-radius: 2px;
+    outline: none;
+}
+.reset-btn{
+    background-color: royalblue !important;
+    padding: 7px 15px !important;
+    font-size: 15px !important;
+    width: unset !important;
+    outline: none !important;
+}
+

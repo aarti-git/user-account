@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>call back function</h1>
+    <script>
+        isNumber(10,function(data,status){
+            console.log("this is number");
+            console.log(data , status);
+        })
+        function isNumber(x,y){
+            var typeOfArgument = typeof(x);
+            if(typeOfArgument == "number"){
+                y(x,true);
+            }else{
+                console.log("this is not number")
+            }
+        }
+    </script>
+</body>
+</html>

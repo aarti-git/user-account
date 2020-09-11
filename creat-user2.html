@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&amp;display=swap" rel="stylesheet">
     <title>creat user 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="sc.js"></script>
 </head>
 
 <body>
@@ -55,37 +55,46 @@
 
         </section>
         <section class="login-form">
-            <form action="http://localhost:2000/submitData" method="GET" onsubmit="submitData(event, this)">
+            <form action="http://localhost:2000" method="" onsubmit="submitData(event, this)">
                 <h2>Login</h2>
-                <label>Name</label>
-                <input type="text" name="name" id="user-name" />
-                <label>Email Address </label>
-                <input type="text" name="email" id="user-email" />
-
-                <label>Profile Pic</label>
-                <input type="file" name="image" onchange="editProfileImg('.profile-img','.profile-img-input')"
-                    class="profile-img-input"><br>
-                <img src="" class="profile-img">
-
-                <label>profession</label>
-                <!-- <input type="text" name="" id="user-profession" /> -->
-                <select id="user-profession" name="job">
-                    <option>select your profession</option>
-                    <option>Student</option>
-                    <option>web Devloper</option>
-                    <option>Software Engineer</option>
-                    <option>Teacher</option>
-                    <option>Indian Army</option>
-                    <option>Acter</option>
-                </select>
-                <label>Contact No</label>
-                <input type="number" name="phone" id="user-contact">
-                <label>password</label>
-                <input type="password" name="password" id="user-password" />
+                <div class="user-fill">
+                    <input type="text" name="firstname" id="user-name" required="" class="form-field" />
+                    <label id="form-label">Name</label>
+                </div>
+                <div class="user-fill">
+                    <input type="text" name="email" id="user-email" required="" class="form-field" />
+                    <label id="form-label">Email Address </label>
+                </div>
+                <div class="user-fill">
+                    <input type="file" name="image" onchange="editProfileImg('.profile-img','.profile-img-input')"
+                        class="profile-img-input form-field"><br>
+                        <label id="form-label">Profile Pic</label>
+                    <img src="" class="profile-img">
+                </div>
+                <div class="user-fill">
+                    <!-- <input type="text" name="" id="user-profession" /> -->
+                    <select id="user-profession" name="job" class="form-field">
+                        <option>select your profession</option>
+                        <option>Student</option>
+                        <option>web Devloper</option>
+                        <option>Software Engineer</option>
+                        <option>Teacher</option>
+                        <option>Indian Army</option>
+                        <option>Acter</option>
+                    </select>
+                </div>
+                <div class="user-fill">
+                    <input type="number" name="phone" id="user-contact" required="" class="form-field">
+                    <label id="form-label">Contact No</label>
+                </div>
+                <div class="user-fill">
+                    <input type="password" name="password" id="user-password" required="" class="form-field" />
+                    <label id="form-label">password</label>
+                </div>
                 <div class="btn-parent">
-                    <button class="btn" id="submit" >submit</button>
-                    <!-- onclick="CreatUserList()" -->
-                    <button class="btn" onclick="goBack()">Go Back</button>
+                    <button class="btn" id="submit">submit</button>
+                    <!-- onsubmit="CreatUserList()" -->
+                    <input type="button" value="Goback" class="btn back-btn" onclick="goBack()">
                 </div>
             </form>
         </section>
@@ -109,6 +118,7 @@
         const userpassword = document.getElementById("user-password");
         const userContact = document.getElementById("user-contact");
         const userProfileImg = document.querySelector(".profile-img");
+        var form = document.querySelector("form");
         // const userProfile = document.querySelector(".userProfile");
 
         function creatUser(y) {
@@ -119,50 +129,74 @@
         }
 
         // onsubmit
-        var form = document.querySelector("form");
 
         function submitData(e, el) {
+            e.preventDefault();
+
             var button = document.querySelector("#submit");
             button.innerHTML = "submiting.."
-            e.preventDefault();
+
             const url = el.action
+            // var x = urlString();
+            var payLoad = payLoadObject();
 
-            urlString();
-            var x = urlString();
-            console.log(x)
-            serverUrl = url + x;
-            $.get(serverUrl,function(data,status){
-                    alert("data save successfully !")
-                    form.reset();
-                    button.innerHTML = "submit";
-                })
-                .fail(function (e) {
-                    console.log("something is wrong!", e)
-                    alert("something is wrong !");
-                    button.innerHTML = "submit";
-                })
+            $.post(url, payLoad, function (data, status) {
+                alert("data save successfully !")
+                button.innerHTML = "submit";
+                CreatUserList();
+                form.reset();
+                userProfileImg.src = "";
+                // userProfileImg.classList.remove("profile-img");
+                userProfileImg.style.display = " none";
+            }).catch(function (e) {
+                console.log("something is wrong!", e)
+                alert("something is wrong !");
+                button.innerHTML = "submit";
+            })
 
         }
 
-        function urlString() {
-            var input = document.querySelectorAll(".login-form input");
-            var str = "";
-            var querystring;
-            for (i = 0; i < input.length; i++) {
-                var item = input[i];
-                var name = item.name;
-                var value = item.value;
-                if (i == 0) {
-                    querystring = "?" + name + "=" + value;
+        function payLoadObject() {
+            var formFieldValues = document.querySelectorAll(".form-field");
+            var x = "";
+            var obj = {}
+            for (i = 0; i < formFieldValues.length; i++) {
+                var item = formFieldValues[i];
+                var itemname = item.name;
+                var itemvalue = item.value;
+                if (itemname == "image") {
+                    itemvalue = userProfileImg.src;
                 }
-                else {
-                    querystring = "&" + name + "=" + value;
-                }
-
-                str += querystring;
+                obj[itemname] = itemvalue;
+                // arr.push(itemname+":"+itemvalue);
+                // obj[i]={infoname:value};
             }
-            return str;
+            return JSON.stringify(obj);
         }
+
+
+        // function urlString() {
+        //     var formFieldValues = document.querySelectorAll(".form-field");
+        //     var str = "";
+        //     var querystring;
+        //     for (i = 0; i < formFieldValues.length; i++) {
+        //         var item = formFieldValues[i];
+        //         var name = item.name;
+        //         var value = item.value;
+        //         if(name == "image"){
+        //             value = userProfileImg.src;
+        //         }
+
+        //         if (i == 0) {
+        //             querystring = "?" + name + "=" + value;
+        //         }
+        //         else {
+        //             querystring = "&" + name + "=" + value;
+        //         }
+        //         str += querystring;
+        //     }
+        //     return str;
+        // }
 
 
 
@@ -173,6 +207,9 @@
                 userProfile.style.display = "none";
                 userList.style.display = "inline-block";
                 myprofile.style.display = "none";
+                form.reset();
+                userProfileImg.src = "";
+                userProfileImg.style.display = " none";
 
             } else {
                 userList.style.display = "inline-block";
@@ -220,7 +257,6 @@
                 return false;
             }
             else {
-                alert("your succesfully login !! welcome ")
                 return true;
             }
         }
@@ -266,10 +302,10 @@
             Ulist.classList.add("user");
             userList.style.height = "550px";
             parentUserList.append(Ulist);
-            for (i = 0; i < input.length; i++) {
-                input[i].value = "";
-            }
-            userProfileImg.src = "";
+            // for (i = 0; i < input.length; i++) {
+            //     input[i].value = "";
+            // }
+            // userProfileImg.src = "";
             userList.style.display = "inline-block";
             loginForm.style.display = "none";
 

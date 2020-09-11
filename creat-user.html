@@ -1,140 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/creat-user.css">
     <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&amp;display=swap" rel="stylesheet">
     <title>creat user</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="toast-notification.js"></script>
 </head>
+
 <body>
+    
     <section class="application-layout">
-        <div class="application-tittle">
-            <h1>User-Account</h1>
-            <button class="btn" onclick="creatUser()">Craet User</button>
+        <div class="logo-add" >
+            <button onclick="loginForm()">+</button>
+            <div>
+                <p>Creat User</p>
+            </div>
         </div>
-        <section id="userList"> 
-                <div class="user-list">
-                    <div class="user-list-heading">
-                        <p>User List</h2>
-                    </div>
-                    <div class="user firstUser" onclick="UserProfile('.firstUserParent')">
-                        <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
-                        <img src="img/yogesh-2.jpg">
-                        <p>User1</p>
-                    </div>
-                    <div class="user secondUser" onclick="UserProfile('.secondUserParent')" >
-                        <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
-                        <img src="img/aarti.jpg">
-                        <p>User2</p>
-                    </div>
-                    <div class="user thirdUser" onclick="UserProfile('.thirdUserParent')">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <p>User3</p>
-                    </div>
-                    <div class="user fourthUser" onclick="UserProfile('.fourthUserParent')">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <p>User4</p>
-                    </div>
-                    <div class="user fifthUser" onclick="UserProfile('.fifthUserParent')">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <p>User5</p>
-                    </div>
-                </div>
-        </section>
-        <section class="login-form">
-            <div>
-                <h2>Login</h2>
-                <label>Name</label>
-                <input type="text" name="Name" value=""/>
-                <label>Email Address </label>
-                <input type="text" name="email" value=""/>
-                <label>birtday Date</label>
-                <input type="date" value=""/>
-                <label>password</label>
-                <input type="password" name="Name" value=""/>
-                <div class="btn-parent">
-                    <button class="btn">submit</button>
-                    <button class="btn" onclick="goBack('.login-form')">Go Back</button>
-                </div>
-            </div>
-        </section> 
-        <section class="firstUserParent">
-            <div>
-                <h1>about user</h1>
-                <img src="img/yogesh-2.jpg">
-                <p>Yogesh Jagdale</p>
-                <p>software engineer</p>
-                <button class="btn" onclick="goBack('.firstUserParent')">Go Back</button>
-            </div>
-            
-        </section>
-        <!--  second user details-->
-        <section class="secondUserParent">
-            <div>
-                <h1>about user</h1>
-                <img src="img/aarti.jpg">
-                <p>aarti Jagdale</p>
-                <p>student</p>
-                <button class="btn" onclick="goBack('.secondUserParent')">Go Back</button>
-            </div>
-        </section>
-        <section class="thirdUserParent">
-            <div>
-                <h1>about user</h1>
-                <!-- <img src="img/yogesh-2.jpg"> -->
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <p>Yogesh Jagdale</p>
-                <p>software engineer</p>
-                <button class="btn" onclick="goBack('.thirdUserParent')">Go Back</button>
-            </div>
-        </section>
-        <section class="fourthUserParent">
-            <div>
-                <h1>about user</h1>
-                <!-- <img src="img/yogesh-2.jpg"> -->
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <p>Yogesh Jagdale</p>
-                <p>software engineer</p>
-                <button class="btn" onclick="goBack('.fourthUserParent')">Go Back</button>
-            </div>
-        </section>
-        <section class="fifthUserParent">
-            <div>
-                <h1>about user</h1>
-                <!-- <img src="img/yogesh-2.jpg"> -->
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <p>Yogesh Jagdale</p>
-                <p>software engineer</p>
-                <button class="btn" onclick="goBack('.fifthUserParent')">Go Back</button>
-            </div>
-        </section>
+        
     </section>
-    <!-- scripting -->
-    <script>
-        const userList = document.getElementById("userList");
-        const loginForm = document.querySelector(".login-form");
-        // const firstUser = document.querySelector(".firstUserParent");
-        function creatUser(){ 
-            userList.style.display="none";
-            loginForm.style.display="block";
+    <section>
+        <div id="overlay">
+        <div class="login-form">
+            <div class="remove-form">
+                <button onclick="removeForm()">x</button>
+            </div>
+            <form action="" method="" onsubmit="submitData(event,this)">
+                <h2>Login</h2>
+                <div class="user-fill">
+                    <input type="text" name="firstname" id="user-name" required="" class="form-field"
+                    onfocus="InputFocus(this)" onblur="InputBlur(this)" />
+                    <label id="form-label" class="labelName">Name</label>
+                </div>
+                <div class="user-fill">
+                    <input type="text" name="email" id="user-email" required="" class="form-field" onfocus="InputFocus(this)" onblur="InputBlur(this)"/>
+                    <label id="form-label" class="labelemail">Email Address </label>
+                </div>
+                <div class="user-fill">
+                    <div class="user-fill">
+                        <select id="user-profession" name="job" class="form-field">
+                            <option>select your profession</option>
+                            <option>Student</option>
+                            <option>web Devloper</option>
+                            <option>Software Engineer</option>
+                            <option>Teacher</option>
+                            <option>Indian Army</option>
+                            <option>Acter</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="user-fill">
+                    <input type="file" name="image" onchange="editProfileImg('.profile-img','.profile-img-input')"
+                    class="profile-img-input form-field"  onfocus="InputFocus(this)" onblur="InputBlur(this)"><br>
+                    <label id="form-label" class="img-lable">Profile Pic</label>
+                    <img src="" class="profile-img">
+                </div>
+                <div class="user-fill">
+                    <input type="password" name="password" id="user-password" required="" class="form-field"  onfocus="InputFocus(this)" onblur="InputBlur(this)"/>
+                    <label id="form-label" class="labelpassword">password</label>
+                </div>
+                <button type="submit" class="btn" onclick="toastNotification('done',true)">submit</button>
+                <!-- <input type="reset" value="reset" class="btn reset-btn"> -->
+                <button type="submit" class="btn" onclick="toastNotification('not done',false)">submit2</button>
+            </form>
+        </div>
+    </div>
+    </section>
+    <!-- <section class="toast-notification">
+         <p id="toast-message"></p> 
+    </section> -->
+
+</body>
+<script>
+    const loginSection = document.querySelector(".login-form");
+    const frontLogo = document.querySelector(".Impty-logo-add");
+    const userProfileImg = document.querySelector(".profile-img");
+    const overlay = document.getElementById("overlay");
+    var form = document.querySelector("form");
+    function loginForm() {
+        loginSection.style.display = "block";
+        overlay.style.display="block"
+    }
+
+    function editProfileImg(x, y) {
+        const profileImg = document.querySelector(x);
+        const file = document.querySelector(y).files[0];
+        userProfileImg.style.display = "block";
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            // convert image file to base64 string
+            profileImg.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
         }
 
-    // goBack button
-    function goBack(x){
-        const loginForm = document.querySelector(x);
-        userList.style.display="block";
-        loginForm.style.display="none";
     }
-    // firstUser click
-    function UserProfile(selector){
-        const firstUser = document.querySelector(selector);
-        userList.style.display="none";
-        firstUser.style.display="block";
 
+    function removeForm() {
+        loginSection.style.display = "none";
+        form.reset();
+        userProfileImg.src = "";
+        userProfileImg.style.display = "none"
+        overlay.style.display="none"
     }
-   
-    </script>
-</body>
+
+    function InputFocus(el) {
+        var inputLable = el.nextElementSibling;
+        inputLable.classList.add("lable-focus");
+        // if(classN == '.img-lable'){ 
+        //     labealClass.style.border = "0";
+        // }
+    }
+    function InputBlur(el){
+        var inputLable = el.nextElementSibling;
+        if(el.value == ""){
+            inputLable.classList.remove("lable-focus");
+        }
+    }
+
+    function submitData(e,elem){
+        // var formLable = document.querySelectorAll("#form-label");
+        e.preventDefault();
+        form.reset();
+        userProfileImg.src = "";
+        userProfileImg.style.display = "none"
+        // for(i=0;i<formLable.length;i++){
+        //     var lableV = formLable[i];
+        //     lableV.classList.remove("lableNewPosition");
+        // }
+    }
+</script>
+
 </html>

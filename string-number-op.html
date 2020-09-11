@@ -12,8 +12,9 @@
     <p id="add"></p>
 
     <h1>Make addition of numbers group in the string</h1>
-    <p>Ex: Aarti12Yogesh108</p>
+    <p>Ex:Aarti12Yogesh108aa10hi100x1x0</p>
     <button onclick="numGroupAddition()">click</button>
+    <p id="devidedArray"></p>
     <p id="GroupAddition"></p>
 
     <h1>remove no from string</h1>
@@ -31,8 +32,10 @@
         // } 
 
         function numAddition() {
+            var arr = [];
             var str = "Aarti12Yogesh108";
             var sum = 0;
+
             for (i = 0; i < str.length; i++) {
                 var v1 = str[i];
                 if (isNaN(v1) == false) {
@@ -44,38 +47,33 @@
         }
 
         function numGroupAddition() {
-            var str = "Aarti12Yogesh108";
+            var str = "Aarti12Yogesh108aa10hi100a1a0";
             var arr = [];
-            var arryStr = "";
-            var arryStr2 = "";
+            var arrayS = [];
             var p = "";
+            var x = "";
+            var add = 0;
 
             for (i = 0; i < str.length; i++) {
                 var v1 = str[i];
-                p = v1;
-                if (isNaN(v1) == false) {
+                if (!isNaN(v1)) {
                     arr.push(v1);
-                    // if(isNaN(p) == false && isNaN(v1) == false ){
-                    //     arryStr += v1;
-                    // }else{
-                    //     arryStr2 += v1;
-                    // }
-                    // arryStr = arr.join('');
-                    // if(isNaN(v1) == false && p !== ""){
-                    //     arryStr+= v1; 
-
-                    // }else{
-                    //     arryStr2+= v1; 
-                    // }
-
-                    arryStr += v1;
+                    x += v1;
                 }
-                else if (isNaN(p) == false && isNaN(v1) == true && p !== "") {
+                else if (!isNaN(p) && isNaN(v1) && p !== "") {
                     // arryStr = arr.join(',');
-                    arryStr += ",";
+                    arrayS.push(x);
+                    x = "";
                 }
+                p = v1;
             }
-            document.getElementById("GroupAddition").innerHTML = arryStr;
+            arrayS.push(x);
+            for (j = 0; j < arrayS.length; j++) {
+                item = arrayS[j];
+                add += parseInt(item);
+            }
+            document.getElementById("devidedArray").innerHTML = arrayS;
+            document.getElementById("GroupAddition").innerHTML = add;
         }
 
 
@@ -86,7 +84,7 @@
             var x = '';
             for (i = 0; i < str.length; i++) {
                 var v1 = str[i];
-                if (isNaN(v1) == false) {
+                if (!isNaN(v1)) {
                     if (x == "") {
                         x = str.replace(v1, '');
                     } else {
