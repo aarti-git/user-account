@@ -20,16 +20,16 @@
     width: 120px;
     height: 120px;
     margin: 0;
-    border: 1px solid gainsboro;
+    border: 2px solid #b7b7b7;
     border-radius: 50%;
     text-align: center;
-    color: gainsboro;
+    color: #b7b7b7;
     background-color: white;
     outline: none;
     font-weight: 100; 
   }
 .logo-add p{
-    color: gainsboro;
+    color: #b7b7b7;
     text-align: center;
     margin-top: 20px;
     font-weight: 200;
@@ -41,14 +41,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1;
+    background-image: linear-gradient(45deg,#1b8292, #c4e0e5);
     width: 100%;
     height: 100%;
 }
 .login-form{
     display: none;
-    width: 28%;
+    min-width: 320px;
     margin: 0 auto;
     padding: 40px;
     position: absolute;
@@ -72,7 +71,7 @@
 .lable-focus{
     top: -20px !important;
     left: 0px !important;
-    color: #0804ff !important;
+    color: #03e9f4 !important;
     font-size: 14px !important;
     /* background-color: transparent; */
 }
@@ -123,9 +122,15 @@ input:-webkit-autofill:active {
     /* margin-top: 20px; */
     font-size: 18px;
 }
+.btn:hover{
+    /* background-color: #248796; */
+    background-color: #4fd7de;
+    color: black;
+}
+
 
 .btn{
-    background-color: royalblue;
+    background-color: #248796;
     padding: 7px 15px;
     font-size: 15px;
     border-radius: 4px;
@@ -145,51 +150,79 @@ input:-webkit-autofill:active {
     object-fit: cover;
     display: none;
 }
+/* toast notification */
+.toast-notification{
+    position: fixed;
+    bottom: 0px;
+    right: 0%;
+}
 
 .toast-message{
     visibility: hidden;
-    border: 1px solid;
-    padding: 5px 10px;
     width: 300px;
     height: 60px;
-    color: white;
-    font-weight: 600;
-    background-color: green;
+    margin-bottom: 5px;
+    background-color: white;
     border-radius: 5px;
     z-index: 1;
-    position: absolute;
     right: 0;
-    bottom: 20px;
+    bottom: 30px;
     line-height: 25px;
     font-weight: 400;
+    box-shadow: 0 0px 5px black;
+
 }
+
 .errorcss{
-    background-color: red !important;
+    background-color: #ff8686 !important;
 }
 .toast-message.show{
     visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation-iteration-count: 1;
+   
 }
-@keyframes fadein {
+@-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;} 
-    to {bottom: 20px; opacity: 1;}
+    to {bottom: 30px; opacity: 1;}
   }
   
-@keyframes fadeout {
-    from {right: 10px; opacity: 1;}
-    to {right: 0; opacity: 0;}
-} 
- 
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+.toastNoti-font-desing{
+    width: 55px;
+    background: green;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 16px;
+    color: white;
+    height: 100%;
+    margin-right: 10px;
+}
 .remove-form{
     position: absolute;
     top: 10px;
     right: 10px;
 }
 .remove-form button:hover{
-    color: black;
+    /* color: black;
     background-color: gainsboro;
-    box-shadow: 0 1px 6px black;
+    box-shadow: 0 1px 6px black; */
+    color: black;
+    background-color: #69c0db;
+    box-shadow: 0 1px 6px #31a4c9;
 }
 .remove-form button{
     width: 20px;

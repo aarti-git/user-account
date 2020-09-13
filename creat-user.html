@@ -62,16 +62,14 @@
                     <input type="password" name="password" id="user-password" required="" class="form-field"  onfocus="InputFocus(this)" onblur="InputBlur(this)"/>
                     <label id="form-label" class="labelpassword">password</label>
                 </div>
-                <button type="submit" class="btn" onclick="toastNotification('done',true)">submit</button>
+                <button type="submit" class="btn" onclick="toastNotification('your login successfully !!',true)">submit</button>
                 <!-- <input type="reset" value="reset" class="btn reset-btn"> -->
-                <button type="submit" class="btn" onclick="toastNotification('not done',false)">submit2</button>
+                <button type="submit" class="btn" onclick="toastNotification('failed to login ..try agin',false)">submit2</button>
             </form>
         </div>
     </div>
     </section>
-    <!-- <section class="toast-notification">
-         <p id="toast-message"></p> 
-    </section> -->
+    <section class="toast-notification"></section>
 
 </body>
 <script>

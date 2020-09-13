@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #snackbar-container {
+            position: fixed;
+            bottom: 0px;
+            left: 50%;
+        }
+
+        .snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Snackbar / Toast notification</h2>
+   
+
+    <button onclick="myFunction()">Show Snackbar</button>
+    <div id="snackbar-container"></div>
+    <script>
+        function myFunction() {
+            var el = document.createElement("div");
+            el.className = "snackbar";
+            var y = document.getElementById("snackbar-container");
+            el.innerHTML = "Some Text1 Message";
+            y.append(el);
+            el.className = "snackbar show";
+            setTimeout(function () { el.className = el.className.replace("snackbar show", "snackbar"); }, 3000);
+        }
+        // if you have to remove created element from document so use this instead of (setTimeout(function () { el.className = el.className.replace("snackbar show", "snackbar"); }, 3000);)
+        // setTimeout(function(){
+        // el.remove()
+        // },3000)
+    </script>
+</body>
+
+</html>
