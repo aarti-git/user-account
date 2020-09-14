@@ -3,6 +3,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body{
+    background-image: url(../img/natural-background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    color: #333;
     font-family:"Roboto";
 }
 .application-layout{
@@ -16,23 +25,25 @@
 }
 
 .logo-add button{
-    font-size: 100px;
-    width: 120px;
-    height: 120px;
+    font-size: 120px;
+    width: 200px;
+    height: 200px;
     margin: 0;
-    border: 2px solid #b7b7b7;
+    border: 0;
     border-radius: 50%;
     text-align: center;
-    color: #b7b7b7;
+    color: #616262;
     background-color: white;
     outline: none;
     font-weight: 100; 
+    font-family:"Roboto";
   }
-.logo-add p{
-    color: #b7b7b7;
+.logo-add div{
+    color: white;
     text-align: center;
     margin-top: 20px;
     font-weight: 200;
+    font-size: 19px;
   }
 
 /* login form */
@@ -41,9 +52,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: linear-gradient(45deg,#1b8292, #c4e0e5);
     width: 100%;
     height: 100%;
+    backdrop-filter: blur(3px);
 }
 .login-form{
     display: none;
@@ -54,9 +65,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 10px 25px rgba(0,0,0,.9);
+    box-shadow: 0 0px 12px rgb(0 0 0 / 40%);
     border-radius: 5px;
     background-color: white;
+    z-index: 1;
 }
 .login-form h2{
     text-align: center;
@@ -123,21 +135,21 @@ input:-webkit-autofill:active {
     font-size: 18px;
 }
 .btn:hover{
-    /* background-color: #248796; */
-    background-color: #4fd7de;
-    color: black;
+   box-shadow:0 0px 5px rgba(0,0,0,0.3)
 }
 
 
 .btn{
-    background-color: #248796;
-    padding: 7px 15px;
+    background-color: white;
+    padding: 9px 15px;
     font-size: 15px;
-    border-radius: 4px;
-    color: white;
-    margin: 0 auto;
+    border-radius: 2px;
+    color: #777676;
     display: inline-block;
-    margin-top: 20px;
+    margin: 30px 25px 0 0;
+    border: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .profile-img-input{
     opacity: 0;

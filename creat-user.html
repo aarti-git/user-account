@@ -16,9 +16,7 @@
     <section class="application-layout">
         <div class="logo-add" >
             <button onclick="loginForm()">+</button>
-            <div>
-                <p>Creat User</p>
-            </div>
+            <div>Creat User</div>
         </div>
         
     </section>
@@ -42,12 +40,12 @@
                 <div class="user-fill">
                     <div class="user-fill">
                         <select id="user-profession" name="job" class="form-field">
-                            <option>select your profession</option>
+                            <option>Select Your Profession</option>
                             <option>Student</option>
-                            <option>web Devloper</option>
+                            <option>Web Devloper</option>
                             <option>Software Engineer</option>
                             <option>Teacher</option>
-                            <option>Indian Army</option>
+                            <option>Army</option>
                             <option>Acter</option>
                         </select>
                     </div>
@@ -55,12 +53,12 @@
                 <div class="user-fill">
                     <input type="file" name="image" onchange="editProfileImg('.profile-img','.profile-img-input')"
                     class="profile-img-input form-field"  onfocus="InputFocus(this)" onblur="InputBlur(this)"><br>
-                    <label id="form-label" class="img-lable">Profile Pic</label>
+                    <label id="form-label" class="img-lable">Profile Picture</label>
                     <img src="" class="profile-img">
                 </div>
                 <div class="user-fill">
                     <input type="password" name="password" id="user-password" required="" class="form-field"  onfocus="InputFocus(this)" onblur="InputBlur(this)"/>
-                    <label id="form-label" class="labelpassword">password</label>
+                    <label id="form-label" class="labelpassword">Password</label>
                 </div>
                 <button type="submit" class="btn" onclick="toastNotification('your login successfully !!',true)">submit</button>
                 <!-- <input type="reset" value="reset" class="btn reset-btn"> -->
@@ -111,6 +109,7 @@
     function InputFocus(el) {
         var inputLable = el.nextElementSibling;
         inputLable.classList.add("lable-focus");
+        el.style.borderBottomss = "1px solid #03e9f4"
         // if(classN == '.img-lable'){ 
         //     labealClass.style.border = "0";
         // }

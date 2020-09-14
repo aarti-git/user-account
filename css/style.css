@@ -93,7 +93,7 @@
 
 .login-form{
     display: none;
-    width: 40%;
+    min-width:350px ;
     margin: 0 auto;
     padding: 40px;
 }
