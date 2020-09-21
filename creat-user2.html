@@ -37,25 +37,15 @@
             <div class="list-parent"></div>
         </section>
         <section class="display-area">
-            <!-- my profile details -->
             <div class="userProfile">
             </div>
-            <div class="my-profile">
-                <i class="fas fa-user-edit user-edit" onclick="edit()"></i>
-                <i class="far fa-image"></i>
-                <div>
-                    <img src="img/aarti.jpg">
-                    <h2>aarti Jagdale</h2>
-                    <p>student</p>
-                    <button class="btn" onclick="goBack(true)">Go Back</button>
-                </div>
-            </div>
+
             <!--end my profilr details  -->
             <!-- display user details -->
 
         </section>
         <section class="login-form">
-            <form action="http://localhost:2000" method="" onsubmit="submitData(event, this)">
+            <form action="http://localhost:2000" method="" onsubmit="submitData(event,this)">
                 <h2>Login</h2>
                 <div class="user-fill">
                     <input type="text" name="firstname" id="user-name" required="" class="form-field" />
@@ -106,7 +96,7 @@
         const userList = document.getElementById("userList");
         const loginForm = document.querySelector(".login-form");
         const userProfile = document.querySelector(".userProfile");
-        const myprofile = document.querySelector(".my-profile");
+        // const myprofile = document.querySelector(".my-profile");
         const user = document.querySelector(".user");
         const input = document.querySelectorAll(".login-form input")
         const parentUserList = document.querySelector(".list-parent");
@@ -124,7 +114,6 @@
         function creatUser(y) {
             userList.style.display = "none";
             userProfile.style.display = "none";
-            myprofile.style.display = "none";
             loginForm.style.display = "block";
         }
 
@@ -135,7 +124,6 @@
 
             var button = document.querySelector("#submit");
             button.innerHTML = "submiting.."
-
             const url = el.action
             // var x = urlString();
             var payLoad = payLoadObject();
