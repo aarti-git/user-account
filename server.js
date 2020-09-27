@@ -34,7 +34,7 @@ var server = http.createServer(function (req, res) {
         else if (route.pathname == '/submitdata') {
             res.write("this is get methode : /submitdata")
             const Udata = route.query;
-            const str = "insert into users (firstname, email,job, pwd, image) values ('" + Udata.firstname + "', '" + Udata.email + "','" + Udata.job + "','" + Udata.password + "', '" + Udata.image + "')"
+            const str = "insert into users (fullname, email,job, pwd, image) values ('" + Udata.name + "', '" + Udata.email + "','" + Udata.job + "','" + Udata.password + "', '" + Udata.image + "')"
 
             connection.query(str, function (error, results, fields) {
                 if (error) {
@@ -49,16 +49,17 @@ var server = http.createServer(function (req, res) {
             });
             return;
         }else if(route.pathname == '/getdatabase'){
-            res.write("this is get methode : /getdatabase")
-            connection.query("SELECT * FROM USERS", function (error, results, fields) {
+            connection.query("Select email from users where fullname like 'y%'", function (error, results, fields) {
                 if(error){
-                    res.write(JSON.stringify({ responce: false }));
+                    res.write(JSON.stringify({results}));
                     res.end();
                     return
                 };
-                console.log(results);
-                res.write(results);
+                // console.log(results);
+                // res.write("this is get methode : /getdatabase")
+                res.write(JSON.stringify({results}));
                 res.end();
+                return
             })
             
         } else {
@@ -73,12 +74,13 @@ var server = http.createServer(function (req, res) {
         req.on('end', function () {
             // console.log(payLoad);
             payLoad = JSON.parse(payLoad);
-            const str = "insert into users (firstname, email,job, pwd, image) values ('" + payLoad.firstname + "', '" + payLoad.email + "' ,'" + payLoad.job + "','" + payLoad.password + "', '" + payLoad.image + "')"
+            const str = "insert into users (fullname, email,job, pwd, image) values ('" + payLoad.name + "', '" + payLoad.email + "' ,'" + payLoad.job + "','" + payLoad.password + "', '" + payLoad.image + "')"
             connection.query(str, function (error, results, fields) {
                 if (error) {
                     res.write(JSON.stringify({ responce: false, ...error }));
                     res.end();
-                    return
+                    // throw error;
+                    return;
                 };
                 // res.send(results);
                 res.write(JSON.stringify({ responce: true }));
@@ -89,9 +91,7 @@ var server = http.createServer(function (req, res) {
 
         return;
     } 
-    res.end(
-
-    );
+    // res.end();
 });
 server.listen(2000,function(){
     console.log("server is created successfully at : http://localhost:2000"); 

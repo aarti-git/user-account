@@ -28,7 +28,7 @@ app.listen(3000, function () {
 
 // var operation = {
 //     insert: function(){
-//         connection.query(`insert into users (firstname, lastname, email, phone,job, pwd, image) values ("User", "Test", "test@gmail.com", "0000", "student", "0000", "image")`, function(error, results, fields){
+//         connection.query(`insert into users (fullname, lastname, email, phone,job, pwd, image) values ("User", "Test", "test@gmail.com", "0000", "student", "0000", "image")`, function(error, results, fields){
 //             if (error) throw error;
 
 //             console.log('Record Inserted!');
@@ -43,7 +43,7 @@ app.get("/", function (req, res) {
     res.end(`
         <form action="http://localhost:3000/submit" onsubmit="submitData(event, this)"  method="GET" style="display:table-caption" id="form">
             <label>Name</label>
-            <input type="text" name="firstname"/>
+            <input type="text" name="name"/>
             <label>last Name</label>
             <input type="text" name="lastname"/>
             <label>email</label>
@@ -108,9 +108,9 @@ app.get("/", function (req, res) {
 app.get('/submit', function (req, res) {
     const route = url.parse(req.url, true)
     const Udata = route.query;
-    console.log(Udata, Udata.firstname + " " + Udata.lastname + "" + Udata.email);
-    var string = "insert into users (firstname, lastname, email, phone,job, pwd, image)values\
-    ('" + Udata.firstname + "', '" + Udata.lastname + "' , '" + Udata.email + "' , '" + Udata.phone + "','student', '0000', 'image')";
+    console.log(Udata, Udata.name + " " + Udata.lastname + "" + Udata.email);
+    var string = "insert into users (fullname, lastname, email, phone,job, pwd, image)values\
+    ('" + Udata.name + "', '" + Udata.lastname + "' , '" + Udata.email + "' , '" + Udata.phone + "','student', '0000', 'image')";
 
     connection.query(string, function (error, results, fields) {
         if (error) throw error;
