@@ -22,8 +22,10 @@ const popup = {
         
         popupElement.style.display="block";
         this._overlay.style.display="block";
-        var popupElementParent = popupElement.parentElement;
+        popupElementParent =popupElement.parentElement;
+        popupElementParent.style.display="block";
         document.body.append(popupElementParent);
+        this.popupElement = popupElementParent;
     },
     close: function(y){
         var popupRemove = document.querySelector(y);
@@ -32,6 +34,7 @@ const popup = {
         };
         this._overlay.style.display="none";
         popupRemove.style.display="none";
+        this.popupElement.style.display="none";
     }
 }
 

@@ -200,14 +200,14 @@
                         lableTag.classList.remove("lable-focus");
                     }
                 } else if (data.responce == false) {
-                    toastNotification('something is wrong !!', false);
+                    toastNotification('something is wrong!!', false);
                     // throw e;
                     // alert("something is wrong !");
                     button.innerHTML = "submit";
                 }
             }).catch(function (e) {
                 console.log("something is wrong!", e);
-                toastNotification('something is wrong !!', false);
+                toastNotification('something is wrong!!', false);
                 button.innerHTML = "submit";
             })
         }
