@@ -49,9 +49,10 @@ body{
   }
 
 /* login form */
+
 .overlay{
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -72,7 +73,7 @@ body{
     min-width: 400px;
     margin: 0 auto;
     padding: 40px;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -416,7 +417,7 @@ input:-webkit-autofill:active {
     padding:50px 20px;
     background-color: white;
     text-align: center;
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0 0 6px rgba(0,0,0,0.3);
     width: 500px;
     border-radius: 2px;
@@ -534,7 +535,6 @@ input:-webkit-autofill:active {
 }
 /* this is table screen css */
 @media only screen and (max-width:1024px){
-
     .logo-add button{
         font-size: 80px;
         width: 150px;
@@ -631,8 +631,14 @@ input:-webkit-autofill:active {
     .logo-add div{
         font-size: 15px;
     }
+    .form-section{
+        height: 100%;
+        overflow: auto;
+    }
     .login-form{
         min-width: 90%;
+        height: 100%;
+        overflow-y: scroll;
     }
     .profile-img{
         width: 40%;

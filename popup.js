@@ -22,8 +22,8 @@ const popup = {
         
         popupElement.style.display="block";
         this._overlay.style.display="block";
-        
-        document.body.append(popupElement);
+        var popupElementParent = popupElement.parentElement;
+        document.body.append(popupElementParent);
     },
     close: function(y){
         var popupRemove = document.querySelector(y);

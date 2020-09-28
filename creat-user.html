@@ -115,9 +115,13 @@
     var userData = [];
 
     function loginForm() {
-        userList.style.display = "none";
-        document.body.style.background = "";
-        popup.open(".login-form");
+        if(userData.length == 0){
+            document.body.style.background = "";
+            popup.open(".login-form");
+        }else{
+            popup.open(".login-form");
+        }
+        
 
     }
 
@@ -141,11 +145,7 @@
         if (userData.length == 0) {
             popup.close(".login-form");
         } else {
-            // userList.style.display = "block";
-            // loginSection.style.display = "none";
-            // overlay.style.display = "none";
             popup.close(".login-form");
-            document.body.style.background = "none";
         }
         form.reset();
         userProfileImg.src = "img/user3.jpg";
@@ -154,11 +154,7 @@
 
     // goBack button
     function goBack() {
-        userProfile.style.display = "none";
-        userList.style.display = "block";
-        // overlay.style.display = "none";
         popup.close(".userProfile");
-        document.body.style.background = "none";
     }
 
     function InputFocus(el) {
