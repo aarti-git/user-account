@@ -48,7 +48,6 @@
 
         function numGroupAddition() {
             var str = "Aarti12Yogesh108aa10hi100a1a0";
-            var arr = [];
             var arrayS = [];
             var p = "";
             var x = "";
@@ -57,11 +56,9 @@
             for (i = 0; i < str.length; i++) {
                 var v1 = str[i];
                 if (!isNaN(v1)) {
-                    arr.push(v1);
                     x += v1;
                 }
                 else if (!isNaN(p) && isNaN(v1) && p !== "") {
-                    // arryStr = arr.join(',');
                     arrayS.push(x);
                     x = "";
                 }

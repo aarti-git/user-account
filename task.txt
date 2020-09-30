@@ -1,0 +1,4 @@
+1) improve html grouping
+2) improve css classes
+3) create notification module
+4) create app modules

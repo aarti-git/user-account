@@ -168,14 +168,10 @@ input:-webkit-autofill:active {
 .profile-img-input{
     opacity: 0;
     position: absolute;
-    top: 100px;
-    left: 30px;
-    overflow: hidden;
+    top: -18px;
+    left: 0px;
 }
 .user-edit-font{
-    position: absolute;
-    top: 120px;
-    right: 100px;
     border: 1px solid;
     border-radius: 50%;
     width: 25px;
@@ -186,15 +182,26 @@ input:-webkit-autofill:active {
     background-color: #555555;
     color: white;
 }
-.profile-img{
+.img-font-layout{
     width: 150px;
     height: 150px;
+    margin: 0 auto;
+}
+.profile-img{
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     border-radius: 50%;
     object-fit: cover;
     text-align: center;
     display: block;
     /* display: none; */
+}
+.img-font-resposive{
+    position: absolute;
+    top: 79%;
+    left: 61%;
+    overflow: hidden;
 }
 /* toast notification */
 .toast-notification{
@@ -290,10 +297,9 @@ input:-webkit-autofill:active {
     width: 100%;
     display: none;
     /* height: 100vh; */
-    background-color: white;
 }
 .list-layout{
-    width: 1100px;
+    width: 90%;
     margin: 0 auto;
     margin-top: 80px;
     height: 100%;
@@ -317,8 +323,7 @@ input:-webkit-autofill:active {
 
 }
 .user{
-    width: 33%;
-    background-color: white;
+    width: 33.333%;
     padding: 50px 20px 80px;
     transition: transform 0.5s;
     position: relative;
@@ -359,29 +364,30 @@ input:-webkit-autofill:active {
 }
 
 .add-user{
-    width: 25%;
+    width: 31%;
     display: inline-block;
     margin: 0 auto;
     text-align: center;
-    margin-left: 50px;
-    padding: 70px 20px;
+    padding: 50px 20px 80px;
+    vertical-align: top;
 }
 .add-user button{
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: 100;
     font-family: "roboto";
     text-align: center;
-    margin-top: 60px;
-    border: 1px solid ;
-    background-color: white;
+    background-color: #bdbec0;;
     outline: none;
+    color: white;
+    margin: 10px;
 }
 .add-user div{
-    color: white;
     text-align: center;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .social-media-account{
@@ -462,10 +468,9 @@ input:-webkit-autofill:active {
     margin-left: 70px;
 }
 .p-img-editPage {
-    height: 150px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
     padding-top: 0px;
-    position: relative;
     display: block;
     border-radius: 50%;
     margin: 0 auto;
@@ -483,10 +488,16 @@ input:-webkit-autofill:active {
     color: white;
     font-size: 13px;
 }
+.img-font-wrapper{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
 .img-font-input{
-    position: fixed;
-    top: 235px;
-    right: 191px;
+    position: absolute;
+    top: 79%;
+    right: 12%;
     overflow: hidden;
 }
 .font-input{
@@ -552,18 +563,22 @@ input:-webkit-autofill:active {
     .login-form h2{
         margin: 0px 0px 30px;
     }
-    .profile-img{
-        width: 40%;
-        height: 40%;
+    .img-font-layout{
+        width: 120px;
+        height: 120px;
     }
     .profile-img-input{
         top: -51px;
         left: 125px;
         overflow: hidden;
     }
+    .img-font-resposive{
+    position: absolute;
+    top: 95px;
+    left: 177px;
+    overflow: hidden;
+    }
     .user-edit-font{
-        top: 96px;
-        right: 107px;
         width: 22px;
         height: 22px;
         font-size: 11px;
@@ -571,6 +586,8 @@ input:-webkit-autofill:active {
     }
     .login-form input, #user-profession {
         margin: 16px 0px;
+        top: -18px;
+        left: 0px;
     }
     .list-layout{
         width: 85%;
@@ -586,10 +603,11 @@ input:-webkit-autofill:active {
     .add-user{
         padding: 60px 20px;
     }
-    .p-img-editPage{
-        height: 120px;
+    .img-font-wrapper {
+        position: relative;
         width: 120px;
-        margin-top: 60px;
+        height: 120px;
+        margin: 0 auto;
     }
     .user-edit-profileFont {
         width: 22px;
@@ -598,8 +616,8 @@ input:-webkit-autofill:active {
         font-size: 11px;
     }
     .img-font-input {
-        top: 202px;
-        right: 165px;
+        top: 78%;
+        right: 10%;
     }
     .userProfile{
         width: 420px;
@@ -619,7 +637,7 @@ input:-webkit-autofill:active {
         width: 22px;
         height: 22px;
         font-size: 13px;
-        padding: 4px;
+        padding: 5px;
     }
     .user-edit {
         font-size: 14px;
@@ -653,8 +671,12 @@ input:-webkit-autofill:active {
         overflow-y: scroll;
     }
     .profile-img{
-        width: 40%;
-        height: 40%;
+        width: 90%;
+        height: 90%;
+    }
+    .img-font-resposive {   
+        top: 78%;
+        left: 59%;
     }
     .profile-img-input{
         top: -45px;
@@ -726,13 +748,16 @@ input:-webkit-autofill:active {
     .userProfile{
         width: 90%;
     }
-    .p-img-editPage{
+   /*  */
+   .img-font-wrapper {
+        position: relative;
         width: 100px;
         height: 100px;
+        margin: 0 auto;
     }
     .img-font-input {
-        top: 182px;
-        right: 102px;
+        top: 75%;
+        right: 10%;
     }
     .font-input{
         top: 0;
