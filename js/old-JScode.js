@@ -1,7 +1,7 @@
-// const loginSection = document.querySelector(".login-form");
-// const frontLogo = document.querySelector(".logo-add");
+const loginSection = document.querySelector(".login-form");
+const frontLogo = document.querySelector("logo-add");
 const userProfileImg = document.querySelector(".profile-img");
-// const overlay = document.querySelector(".overlay");
+const overlay = document.querySelector(".overlay");
 const userProfile = document.querySelector(".userProfile");
 const userList = document.querySelector(".user-list");
 const applicationLayout = document.querySelector(".application-layout");
@@ -16,18 +16,20 @@ const lablefocus = document.querySelectorAll("label");
 
 var userData = [];
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function(){
     appModule.init();
 });
 
-// function loginForm() {
-//     if (userData.length == 0) {
-//         document.body.style.background = "";
-//         popup.open(".login-form");
-//     } else {
-//         popup.open(".login-form");
-//     }
-// }
+function loginForm() {
+    if (userData.length == 0) {
+        document.body.style.background = "";
+        popup.open(".login-form");
+    } else {
+        popup.open(".login-form");
+    }
+
+
+}
 
 function editProfileImg(x, y) {
     const profileImg = document.querySelector(x);
@@ -42,21 +44,22 @@ function editProfileImg(x, y) {
     if (file) {
         reader.readAsDataURL(file);
     }
+
 }
 
-// function removeForm() {
-// if (userData.length == 0) {
-//     popup.close(".login-form");
-// } else {
-//     popup.close(".login-form");
-// }
-// form.reset();
-// userProfileImg.src = "img/user3.jpg";
-// for (i = 0; i < lablefocus.length; i++) {
-//     var lableTag = lablefocus[i];
-//     lableTag.classList.remove("lable-focus");
-// }
-// }
+function removeForm() {
+    if (userData.length == 0) {
+        popup.close(".login-form");
+    } else {
+        popup.close(".login-form");
+    }
+    form.reset();
+    userProfileImg.src = "img/user3.jpg";
+    for (i = 0; i < lablefocus.length; i++) {
+        var lableTag = lablefocus[i];
+        lableTag.classList.remove("lable-focus");
+    }
+}
 
 // goBack button
 function goBack() {
@@ -83,7 +86,7 @@ function submitData(e, el) {
         return
     } else {
         var button = document.querySelector("#submit");
-        button.innerHTML = "submiting..."
+        button.innerHTML = "submiting.."
         const url = el.action
         var payLoad = payLoadObject();
         $.post(url, payLoad, function (data, status) {
@@ -173,11 +176,6 @@ function formValidation() {
 function creatList() {
     var obj = {};
     const userProfileImg = document.querySelector(".profile-img");
-    $.get("http://localhost:2000/getdatabase",function(responce){
-       var  result = responce.results;
-        console.log("result : ", result);
-    });
-
     obj.name = userName.value;
     obj.email = userEmail.value;
     obj.profession = userprofession.value;
@@ -204,15 +202,16 @@ function creatList() {
     parentUserList.prepend(Ulist);
     userList.style.display = "block";
     applicationLayout.style.display = "none";
+    loginSection.style.display = "none";
     // this function for display user profile
     Ulist.addEventListener("click", function () {
         popup.open(".userProfile");
         var indexNo = userData.indexOf(obj);
         userProfile.innerHTML =
-            "<div>" +
+            "<div>"+
             "<i class='fas fa-trash-alt user-edit' onclick='deletUser(" + indexNo + ")'></i>" +
             "<i class='fas fa-edit user-edit' onclick='edit(" + indexNo + ")'></i>" +
-            "</div>" +
+            "</div>"+
             // "<i class='fa fa-user profile-font' aria-hidden='true'></i>" +
             "<div class='img-font-wrapper'>" +
             "<img src='" + obj.img + "' class='p-img-editPage'/>" +
@@ -221,14 +220,13 @@ function creatList() {
             "<input type='file'class='font-input' onchange='editProfileImg(\".p-img-editPage\",\".font-input\")'>" +
             "</div>" +
             "</div>" +
-            "<div>" +
+            "<div>"+
             "<h2>" + obj.name + "</h2>" +
             "<span class='profession'>" + obj.profession + "</span>" +
             "<span class='email'>" + obj.email + "</span>" +
-            "</div>" +
+            "</div>"+
             // "<p id ='contact'>" + obj.contact + "</p>" +
-            "<button class='btn 'onclick='goBack()'>Go Back</button>";
-            // onclick='goBack()'
+            "<button class='btn' onclick='goBack(true)'>Go Back</button>";
     })
     // form.reset();
     // userProfileImg.src = "img/user3.jpg";
@@ -302,6 +300,7 @@ function edit(indexNo) {
 }
 
 // deletUser
+{
     function deletUser(indexNo) {
         var deletAction = confirm(" You Want To Delet This User ? ")
         if (deletAction == true) {
@@ -315,4 +314,4 @@ function edit(indexNo) {
             }
         }
     }
-
+}

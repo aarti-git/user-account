@@ -49,7 +49,7 @@ var server = http.createServer(function (req, res) {
             });
             return;
         }else if(route.pathname == '/getdatabase'){
-            connection.query("Select email from users where fullname like 'y%'", function (error, results, fields) {
+            connection.query("select * from users", function (error, results, fields) {
                 if(error){
                     res.write(JSON.stringify({results}));
                     res.end();
@@ -57,6 +57,7 @@ var server = http.createServer(function (req, res) {
                 };
                 // console.log(results);
                 // res.write("this is get methode : /getdatabase")
+                console.log("userData count is : " + results.length);
                 res.write(JSON.stringify({results}));
                 res.end();
                 return
