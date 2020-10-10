@@ -1,127 +1,127 @@
 @import "font.css";
-*{    
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
-body{
-    background-image: url(../img/natural-background.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    color: #333;
-    font-family:"Roboto";
-}
-
-.hide{
-    display: none !important;
+body {
+  background-image: url(../img/natural-background.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  color: #333;
+  font-family: "Roboto";
 }
 
-.application-layout{
-    width: 100%;
-}
-.logo-add{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.hide {
+  display: none !important;
 }
 
-.logo-add button{
-    font-size: 120px;
-    width: 200px;
-    height: 200px;
-    margin: 0;
-    border: 0;
-    border-radius: 50%;
-    text-align: center;
-    color: #616262;
-    background-color: white;
-    outline: none;
-    font-weight: 100; 
-    font-family:"Roboto";
-    box-shadow: 0 0px 6px rgba(0,0,0,.3);
-  }
-.logo-add div{
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    font-weight: 200;
-    font-size: 19px;
-  }
+.application-layout {
+  width: 100%;
+}
+.logo-add {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo-add button {
+  font-size: 120px;
+  width: 200px;
+  height: 200px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  text-align: center;
+  color: #616262;
+  background-color: white;
+  outline: none;
+  font-weight: 100;
+  font-family: "Roboto";
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.3);
+}
+.logo-add div {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 200;
+  font-size: 19px;
+}
 
 /* login form */
 
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(4px);
-    z-index: 2;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  z-index: 2;
 }
 
-.login-form{
-    background-color: #fff;
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    align-self: center;
-    box-shadow: 0 0px 12px rgb(0 0 0 / 40%);
-    border-radius: 5px;
-    width: 400px;
-    margin: 0 auto;
-    padding: 40px;
+.login-form {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-self: center;
+  box-shadow: 0 0px 12px rgb(0 0 0 / 40%);
+  border-radius: 5px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 40px;
 }
-.login-form h2{
-    text-align: center;
-    margin: 0px 0px 40px;
-    font-size: 30px;
-    font-weight: 400;
+.login-form h2 {
+  text-align: center;
+  margin: 0px 0px 40px;
+  font-size: 30px;
+  font-weight: 400;
 }
-.user-fill{
-    position: relative;
+.user-fill {
+  position: relative;
 }
 
-.lable-focus{
-    top: -22px !important;
-    left: 0px !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    transition-duration: 0.5s !important;
+.lable-focus {
+  top: -22px !important;
+  left: 0px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition-duration: 0.5s !important;
 }
 
 .login-form input,
-#user-profession{
-    font-size: 16px;
-    padding: 3px 0px 0;
-    margin: 17px 0px;
-    width: 100%;
-    height: 35px;
-    border: 0;
-    border-bottom: 1px solid;
-    outline: none;
-    font-weight: 200;
-    font-family: "roboto";  
-    background-color: white;
+#user-profession {
+  font-size: 16px;
+  padding: 3px 0px 0;
+  margin: 17px 0px;
+  width: 100%;
+  height: 35px;
+  border: 0;
+  border-bottom: 1px solid;
+  outline: none;
+  font-weight: 200;
+  font-family: "roboto";
+  background-color: white;
 }
-#user-name{
-    text-transform: capitalize;
+#user-name {
+  text-transform: capitalize;
 }
-.form-label{
-    position: absolute;
-    top: 5px;
-    left: 0px ;
-    pointer-events: none;
-    padding:20px 0 10px ;
-    font-size: 16px;
-    transition: .5s;
-    font-weight: 200;
+.form-label {
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  pointer-events: none;
+  padding: 20px 0 10px;
+  font-size: 16px;
+  transition: 0.5s;
+  font-weight: 200;
 }
 /* .login-form input:valid ~ .form-label,
 .login-form input:focus ~ .form-label{
@@ -133,698 +133,715 @@ body{
 } */
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important; 
-    -webkit-text-fill-color:black;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: black;
 }
 
-.img-lable{
-    /* border-bottom: 1px solid black;
+.img-lable {
+  /* border-bottom: 1px solid black;
     width: 100%;
     font-size: 16px; */
-    display: none;
+  display: none;
 }
-.btn:hover{
-   box-shadow:0 0px 5px rgba(0,0,0,0.3)
+.btn:hover {
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
 }
 
-.btn{
-    background-color: white;
-    padding: 9px 15px;
-    font-size: 15px;
-    border-radius: 2px;
-    color: #777676;
-    display: inline-block;
-    margin: 30px 25px 0 0;
-    border: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    outline: none;
+.btn {
+  background-color: white;
+  padding: 9px 15px;
+  font-size: 15px;
+  border-radius: 2px;
+  color: #777676;
+  display: inline-block;
+  margin: 30px 25px 0 0;
+  border: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  outline: none;
 }
-.profile-img-input{
-    opacity: 0;
-    position: absolute;
-    top: -18px;
-    left: 0px;
+.profile-img-input {
+  opacity: 0;
+  position: absolute;
+  top: -18px;
+  left: 0px;
 }
-.user-edit-font{
-    border: 1px solid;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    font-size: 13px;
-    text-align: center;
-    padding: 5px;
-    background-color: #555555;
-    color: white;
+.user-edit-font {
+  border: 1px solid;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 13px;
+  text-align: center;
+  padding: 5px;
+  background-color: #555555;
+  color: white;
 }
-.img-font-layout{
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-    margin-bottom: 20px;
+.img-font-layout {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
-.profile-img{
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    border-radius: 50%;
-    object-fit: cover;
-    text-align: center;
-    display: block;
-    /* display: none; */
+.profile-img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  text-align: center;
+  display: block;
+  /* display: none; */
 }
-.img-font-resposive{
-    position: absolute;
-    top: 79%;
-    left: 61%;
-    overflow: hidden;
+.img-font-resposive {
+  position: absolute;
+  top: 79%;
+  left: 61%;
+  overflow: hidden;
 }
 /* toast notification */
-.toast-notification{
-    position: fixed;
-    bottom: 0px;
-    right: 0%;
-    z-index: 3;
+.toast-notification {
+  position: fixed;
+  bottom: 0px;
+  right: 0%;
+  z-index: 3;
 }
 
-.toast-message{
-    visibility: hidden;
-    width: 280px;
-    height: 55px;
-    margin-bottom: 10px;
-    background-color: white;
-    border-radius: 5px;
-    right: 0;
-    box-shadow: 0 0px 5px rgba(0,0,0,0.3);
+.toast-message {
+  visibility: hidden;
+  width: 280px;
+  height: 55px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  right: 0;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
 }
-.toast-message span{
-    font-size: 16px;
-    text-transform: capitalize;
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 20px;
-    font-weight: 200;
+.toast-message span {
+  font-size: 16px;
+  text-transform: capitalize;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+  font-weight: 200;
 }
 
-.errorcss{
-    background-color: #ff8686 !important;
+.errorcss {
+  background-color: #ff8686 !important;
 }
-.toast-message.show{
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-   
+.toast-message.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
   }
-  
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
 @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
   }
-  
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
 @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
   }
-  
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
 @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
   }
-.toastNoti-font-desing{
-    width: 50px;
-    background: green;
-    text-align: center;
-    color: white;
-    height: 100%;
-    margin-right: 10px;
-    padding: 10px;
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
-.support-parent{
-    position: relative;
+.toastNoti-font-desing {
+  width: 50px;
+  background: green;
+  text-align: center;
+  color: white;
+  height: 100%;
+  margin-right: 10px;
+  padding: 10px;
 }
-.remove-form{
-    position: absolute;
-    top: -20px;
-    right: -20px;
+.support-parent {
+  position: relative;
 }
-.remove-form button:hover{
-    box-shadow: 0 1px 6px rgba(0,0,0,.3);
+.remove-form {
+  position: absolute;
+  top: -20px;
+  right: -20px;
 }
-.remove-form button{
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 2px;
-    outline: none;
+.remove-form button:hover {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
-.reset-btn{
-    background-color: royalblue !important;
-    padding: 7px 15px !important;
-    font-size: 15px !important;
-    width: unset !important;
-    outline: none !important;
+.remove-form button {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 2px;
+  outline: none;
+}
+.reset-btn {
+  background-color: royalblue !important;
+  padding: 7px 15px !important;
+  font-size: 15px !important;
+  width: unset !important;
+  outline: none !important;
 }
 
 /*  */
-.user-list{
-    width: 100%;
-    display: none;
-    /* height: 100vh; */
+.user-list {
+  width: 100%;
+  /* display: none; */
+  /* height: 100vh; */
 }
-.list-layout{
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 80px;
-    height: 100%;
+.list-layout {
+  width: 1100px;
+  margin: 0 auto;
+  margin-top: 80px;
+  height: 100%;
 }
-.user:hover{
-    box-shadow: 0 0 20px rgba(0,0,0,.3);
-    border-radius: 2px;
-    transform: scale(1.1);
-    z-index: 1;
+.user:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  transform: scale(1.1);
+  z-index: 1;
 }
-.user:hover .social-media-account{
-    opacity:1;
-    position: absolute;
-    bottom: 45px;
-    transition: all 0.3s ease;
+.user:hover .social-media-account {
+  opacity: 1;
+  position: absolute;
+  bottom: 45px;
+  transition: all 0.3s ease;
 }
 
-.list-parent{
-    display: inline-block;
-    width: 100%;
-
+.list-parent {
+  display: inline-block;
+  width: 100%;
 }
-.user{
-    width: 33.333%;
-    padding: 50px 20px 80px;
-    transition: transform 0.5s;
-    position: relative;
-    display: inline-block;
-
+.user {
+  width: 33.333%;
+  padding: 50px 20px 80px;
+  transition: transform 0.5s;
+  position: relative;
+  display: inline-block;
 }
-.profile-layout{
-    width: 100%;
-    margin: 0 auto;
-    text-align:center;
+.profile-layout {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
-.user-img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
+.user-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
-.user h2::first-letter{
-    text-transform: capitalize;
+.user h2::first-letter {
+  text-transform: capitalize;
 }
-.user h2{
-    font-weight: 400;
-    padding-bottom: 10px;
-    font-size: 22px;
+.user h2 {
+  font-weight: 400;
+  padding-bottom: 10px;
+  font-size: 22px;
 }
 
 .user span {
-    display: inline-block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: 200;
-    display: block;
-    font-weight: 200;
-    color: #817e7e;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 200;
+  display: block;
+  font-weight: 200;
+  color: #817e7e;
 }
 
-.add-user{
-    width: 31%;
-    display: inline-block;
-    margin: 0 auto;
-    text-align: center;
-    padding: 50px 20px 80px;
-    vertical-align: top;
+.add-user {
+  width: 31%;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px 20px 80px;
+  vertical-align: top;
 }
-.add-user button{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    font-size: 55px;
-    font-weight: 100;
-    font-family: "roboto";
-    text-align: center;
-    background-color: #bdbec0;;
-    outline: none;
-    color: white;
-    margin: 10px;
+.add-user button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-size: 55px;
+  font-weight: 100;
+  font-family: "roboto";
+  text-align: center;
+  background-color: #bdbec0;
+  outline: none;
+  color: white;
+  margin: 10px;
 }
-.add-user div{
-    text-align: center;
-    font-size: 15px;
-    font-weight: 400;
+.add-user div {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
 }
 
-.social-media-account{
-    opacity: 0;
+.social-media-account {
+  opacity: 0;
+  font-size: 16px;
+  padding: 10px 10px 0px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.social-media-account i:hover {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+.social-media-account i {
+  margin: 0px 4px;
+  color: #7a7a7a;
+  width: 30px;
+  height: 30px;
+  padding: 7px;
+  text-align: center;
+}
+.DesplayElcss {
+  overflow: auto;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.display-area {
+  display: inline-flex;
+  vertical-align: top;
+  margin-top: 50px;
+}
+.userProfile {
+  background-color: #fff;
+  /* position: relative; */
+  align-self: center;
+  width: 500px;
+  padding: 50px 20px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.userProfile h2 {
+  font-weight: 400;
+  padding: 10px;
+}
+.userProfile span {
+  line-height: 30px;
+  font-weight: 200;
+  display: block;
+}
+.user-edit:hover {
+  border: 0;
+  box-shadow: 0 0 4px rgb(0, 0, 0, 0.3);
+}
+.user-edit {
+  font-size: 15px;
+  float: right;
+  border: 1px solid gainsboro;
+  width: 35px;
+  height: 35px;
+  padding-top: 10px;
+}
+
+.profile-font {
+  font-size: 100px;
+  border-radius: 50%;
+  border: 1px solid gainsboro;
+  height: 150px;
+  width: 150px;
+  color: gainsboro;
+  padding-top: 20px;
+  margin: 10px;
+  text-align: center;
+  margin-left: 70px;
+}
+.p-img-editPage {
+  height: 100%;
+  width: 100%;
+  padding-top: 0px;
+  display: block;
+  border-radius: 50%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 70px;
+}
+.user-edit-profileFont {
+  visibility: hidden;
+  width: 25px;
+  border: 1px solid;
+  border-radius: 50%;
+  height: 25px;
+  padding: 5px;
+  background-color: #3b3939;
+  color: white;
+  font-size: 13px;
+}
+.img-font-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+.img-font-input {
+  position: absolute;
+  top: 79%;
+  right: 12%;
+  overflow: hidden;
+}
+.font-input {
+  position: absolute;
+  top: 0;
+  right: -200px;
+  opacity: 0;
+}
+
+.owner-profile-layout {
+  position: absolute;
+  top: 90px;
+  left: 70px;
+  display: flex;
+}
+.owner-profile-layout h2 {
+  font-weight: 200;
+  align-self: center;
+  margin-left: 20px;
+  font-size: 30px;
+  color: white;
+}
+.owner-profile {
+  background-image: url(../img/natural-background.jpg);
+  width: 100%;
+  height: 300px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.owner-profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  filter: grayscale(1);
+}
+.edit-input {
+  font-size: 16px;
+  padding: 3px 10px;
+  width: 330px;
+  height: 40px;
+  border: 0;
+  border-bottom: 1px solid gainsboro;
+  margin-top: 10px;
+  font-weight: 100;
+  outline: none;
+  color: #494848;
+}
+/* this is table screen css */
+@media only screen and (max-width: 1024px) and (max-height: 400px) {
+  .DesplayElcss {
+    justify-content: unset;
+  }
+  .login-form {
+    position: unset;
+    top: 0;
+    left: 0;
+    transform: unset;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .logo-add button {
+    font-size: 80px;
+    width: 150px;
+    height: 150px;
+  }
+  .login-form {
+    padding: 30px;
+    width: 370px;
+  }
+  .logo-add div {
     font-size: 16px;
-    padding: 10px 10px 0px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%);
-}
-
-.social-media-account i:hover{
-    box-shadow: 0 0 3px rgba(0,0,0,.3);
-    border-radius: 2px;
-}
-.social-media-account i{
-    margin: 0px 4px;
-    color: #7a7a7a;
+  }
+  .login-form h2 {
+    margin: 0px 0px 30px;
+  }
+  .img-font-layout {
+    width: 120px;
+    height: 120px;
+  }
+  .user-img {
+    width: 90px;
+    height: 90px;
+  }
+  .user h2 {
+    font-size: 20px;
+  }
+  .user span {
+    font-size: 13px;
+  }
+  .profile-img-input {
+    top: -22px;
+    left: 0px;
+  }
+  .img-font-resposive {
+    top: 91px;
+    left: 180px;
+  }
+  .user-edit-font {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    padding: 4px;
+  }
+  .login-form input,
+  #user-profession {
+    margin: 16px 0px;
+  }
+  .list-layout {
+    width: 85%;
+    margin-top: 60px;
+  }
+  .list-parent {
+    width: 100%;
+  }
+  .user {
+    padding: 40px 10px 70px;
+  }
+  .add-user {
+    padding: 40px 10px 70px;
+  }
+  .img-font-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+  }
+  .user-edit-profileFont {
+    width: 22px;
+    height: 22px;
+    padding: 4px;
+    font-size: 11px;
+  }
+  .img-font-input {
+    top: 78%;
+    right: 10%;
+  }
+  .userProfile {
+    width: 420px;
+  }
+  .font-input {
+    top: 0;
+    right: -128px;
+    width: 200px;
+  }
+  .userProfile span {
+    font-size: 15px;
+  }
+  .social-media-account {
+    padding: 10px 0px 0px;
+  }
+  .social-media-account i {
+    width: 22px;
+    height: 22px;
+    font-size: 13px;
+    padding: 5px;
+  }
+  .user-edit {
+    font-size: 14px;
     width: 30px;
     height: 30px;
     padding: 7px;
-    text-align: center;
-    
-}
-.DesplayElcss{
-    overflow: auto;
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.display-area{
-    display: inline-flex;
-    vertical-align: top;
-    margin-top: 50px;
-}
-.userProfile{
-    background-color: #fff;
-    /* position: relative; */
-    align-self: center;
-    width: 500px;
-    padding:50px 20px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 2px;
-    margin: 0 auto;
-    text-align: center;
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.userProfile h2{
-    font-weight: 400;
-    padding: 10px;
-}
-.userProfile span{
-    line-height: 30px;
-    font-weight: 200;
-    display: block;
-}
-.user-edit:hover{
-    border: 0;
-    box-shadow: 0 0 4px rgb(0,0,0,.3);
-}
-.user-edit{
-    font-size: 15px;
-    float: right;
-    border: 1px solid gainsboro;
-    width: 35px;
-    height: 35px;
-    padding-top: 10px;
-    margin-right: 2px;
-}
-
-.profile-font{
-    font-size: 100px;
-    border-radius: 50%;
-    border: 1px solid gainsboro;
-    height: 150px;
-    width: 150px;
-    color: gainsboro;
-    padding-top: 20px;
-    margin: 10px;
-    text-align: center;
-    margin-left: 70px;
-}
-.p-img-editPage {
-    height: 100%;
-    width: 100%;
-    padding-top: 0px;
-    display: block;
-    border-radius: 50%;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 70px;
-}
-.user-edit-profileFont{
-    visibility: hidden;
-    width: 25px;
-    border: 1px solid;
-    border-radius: 50%;
-    height: 25px;
-    padding: 5px;
-    background-color: #3b3939;
-    color: white;
-    font-size: 13px;
-}
-.img-font-wrapper{
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-}
-.img-font-input{
-    position: absolute;
-    top: 79%;
-    right: 12%;
-    overflow: hidden;
-}
-.font-input{
-    position: absolute;
-    top: 240px;
-    right: -16px;
-    opacity: 0;
-}
-
-.owner-profile-layout{
-    position: absolute;
-    top: 90px;
-    left: 70px;
-    display: flex;
-}
-.owner-profile-layout h2{
-    font-weight: 200;
-    align-self: center;
-    margin-left: 20px;
-    font-size: 30px;
-    color: white;
-}
-.owner-profile{
-    background-image: url(../img/natural-background.jpg);
-    width: 100%;
-    height: 300px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.owner-profile-img{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    filter: grayscale(1);
-}
-.edit-input{
-    font-size: 16px;
-    padding: 3px 10px;
-    width: 330px;
-    height: 40px;
-    border: 0;
-    border-bottom: 1px solid gainsboro;
-    margin-top: 10px;
-    font-weight: 100;
-    outline: none;
-    color: #494848;
-}
-/* this is table screen css */
-@media only screen and (max-width:1024px) and (max-height:400px){
-    .DesplayElcss{
-        justify-content:unset;
-    }
-    .login-form{
-        position: unset;
-        top: 0;
-        left: 0;
-        transform: unset;
-    }
-}
-@media only screen and (max-width:1024px){
-    .logo-add button{
-        font-size: 80px;
-        width: 150px;
-        height: 150px;
-    }
-    .login-form{
-        padding: 30px;
-        width: 370px;
-    }
-    .logo-add div {
-        font-size: 16px;
-    }
-    .login-form h2{
-        margin: 0px 0px 30px;
-    }
-    .img-font-layout{ 
-        width: 120px;
-        height: 120px;
-    }
-    .user-img {
-        width: 90px;
-        height: 90px;
-    }
-    .user h2{
-        font-size: 20px;
-    }
-    .user span {
-        font-size: 13px;
-    }
-    .profile-img-input{
-        top: -22px;
-        left: 0px;
-    }
-    .img-font-resposive{
-        top: 91px;
-        left: 180px;
-    }
-    .user-edit-font{
-        width: 22px;
-        height: 22px;
-        font-size: 11px;
-        padding: 4px;
-    }
-    .login-form input, #user-profession {
-        margin: 16px 0px;
-    }
-    .list-layout{
-        width: 85%;
-        margin-top: 60px;
-    }
-    .list-parent{
-        width: 100%;
-    }
-    .user{
-        padding: 40px 10px 70px;
-    }
-    .add-user{
-        padding: 40px 10px 70px;
-    }
-    .img-font-wrapper {
-        position: relative;
-        width: 120px;
-        height: 120px;
-        margin: 0 auto;
-    }
-    .user-edit-profileFont {
-        width: 22px;
-        height: 22px;
-        padding: 4px;
-        font-size: 11px;
-    }
-    .img-font-input {
-        top: 78%;
-        right: 10%;
-    }
-    .userProfile{
-        width: 420px;
-    }
-    .font-input {
-        top: 0;
-        right: -128px;
-        width: 200px;
-    }
-    .userProfile span{
-        font-size: 15px;
-    }
-    .social-media-account{
-        padding: 10px 0px 0px;
-    }
-    .social-media-account i{
-        width: 22px;
-        height: 22px;
-        font-size: 13px;
-        padding: 5px;
-    }
-    .user-edit {
-        font-size: 14px;
-        width: 30px;
-        height: 30px;
-        padding: 7px;
-    }
-
-
+  }
 }
 
 /* this is mobile screen css */
-@media only screen and (max-width:480px){
-    .logo-add button{
-        font-size: 50px;
-        width: 100px;
-        height: 100px;
-    }
-    .logo-add div{
-        font-size: 15px;
-    }
+@media only screen and (max-width: 480px) {
+  .logo-add button {
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+  }
+  .logo-add div {
+    font-size: 15px;
+  }
 
-    .login-form{
-        width: 90%;
-        padding: 30px 10px;
-        position: unset;
-        top: 0;
-        left: 0;
-        transform: unset;
-      
-    }
-    .support-parent{
-        width: 93%;
-    }
-    .img-font-layout {
-        width: 120px;
-        height: 120px;
-    }
-    .img-font-resposive {   
-        top: 76%;
-        left: 62%;
-    }
-    .profile-img-input{
-        top: -23px;
-        left: 0px;
-    }
-    .user-edit-font{
-        top: 76px;
-        right: 98px;
-        width: 20px;
-        height: 20px;
-        font-size: 10px;
-        padding: 4px;
-    }
-    .user-fill{
-        width: 90%;
-        margin: 0 auto;
-        display: block;
-    }
-    .login-form input,
-     #user-profession{
-        font-size: 16px;
-    }
-    /* .toast-message{
+  .login-form {
+    width: 90%;
+    padding: 30px 10px;
+    position: unset;
+    top: 0;
+    left: 0;
+    transform: unset;
+  }
+  .support-parent {
+    width: 93%;
+  }
+  .img-font-layout {
+    width: 120px;
+    height: 120px;
+  }
+  .img-font-resposive {
+    top: 76%;
+    left: 62%;
+  }
+  .profile-img-input {
+    top: -23px;
+    left: 0px;
+  }
+  .user-edit-font {
+    top: 76px;
+    right: 98px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    padding: 4px;
+  }
+  .user-fill {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+  }
+  .login-form input,
+  #user-profession {
+    font-size: 16px;
+  }
+  /* .toast-message{
         width: 200px;
         height: 30px;
     } */
 
-    .owner-profile{
-        position: relative;
-    }
-   
-    .owner-profile-layout{
-        display: block;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        text-align: center;
-    }
-    .owner-profile-layout h2{
-        font-size: 20px;
-        margin-left: 0px;
-    }
-    .list-layout{
-        width: 80%;
-        margin-top: 50px;
-    }
-    .list-parent{
-        display: block;
-        width: 90%;
-        margin: 0 auto;
-    }
-    .user:hover .social-media-account {
-        bottom: 30px;
-    }
-    .user{
-        width: 100%;
-        padding: 30px 20px 60px;
-    }
-    .add-user{
-        display: block;
-        margin-left: 0px;
-        width: 100%;
-    }
-    .userProfile{
-        width: 90%;
-    }
-   /*  */
-   .img-font-wrapper {
-        position: relative;
-        width: 100px;
-        height: 100px;
-        margin: 0 auto;
-    }
-    .img-font-input {
-        top: 75%;
-        right: 10%;
-    }
-    .font-input{
-        top: 0;
-        right: -129px;
-        width: 190px;
-    }
-    .user-edit-profileFont {
-        width: 20px;
-        height: 20px;
-        padding: 4px;
-        font-size: 10px;
-    }
-    .userProfile span{
-        line-height: 25px;
-        display: block;
-    }
-    .userProfile h2{
-        padding: 10px 0;
-    }
-    .edit-input{
-        width: 100%;
-        font-size: 14px;
-        padding: 3px 15px;
-    }
-    .btn{
-        margin: 30px 20px 0 15px;
-    }
-    .toastNoti-font-desing {
-        width: 45px;
-        margin-right: 10px;
-        padding: 10
-    }
-    .toast-message {
-        width: 220px;
-        height: 45px;
-        margin-bottom: 5px;
-    }
-    .toast-message span {
-        font-size: 16px;
-        margin-top: 14px;
-    }
+  .owner-profile {
+    position: relative;
+  }
+
+  .owner-profile-layout {
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .owner-profile-layout h2 {
+    font-size: 20px;
+    margin-left: 0px;
+  }
+  .list-layout {
+    width: 80%;
+    margin-top: 50px;
+  }
+  .list-parent {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .user:hover .social-media-account {
+    bottom: 30px;
+  }
+  .user {
+    width: 100%;
+    padding: 30px 20px 60px;
+  }
+  .add-user {
+    display: block;
+    margin-left: 0px;
+    width: 100%;
+  }
+  .userProfile {
+    width: 90%;
+  }
+  /*  */
+  .img-font-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  .img-font-input {
+    top: 75%;
+    right: 10%;
+  }
+  .font-input {
+    top: 0;
+    right: -129px;
+    width: 190px;
+  }
+  .user-edit-profileFont {
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    font-size: 10px;
+  }
+  .userProfile span {
+    line-height: 25px;
+    display: block;
+  }
+  .userProfile h2 {
+    padding: 10px 0;
+  }
+  .edit-input {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px 15px;
+  }
+  .btn {
+    margin: 30px 20px 0 15px;
+  }
+  .toastNoti-font-desing {
+    width: 45px;
+    margin-right: 10px;
+    padding: 10;
+  }
+  .toast-message {
+    width: 220px;
+    height: 45px;
+    margin-bottom: 5px;
+  }
+  .toast-message span {
+    font-size: 16px;
+    margin-top: 14px;
+  }
 }
