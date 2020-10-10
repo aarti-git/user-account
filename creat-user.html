@@ -52,7 +52,8 @@
                     <button class="remove-form-btn">x</button>
                 </div>
             </div>
-            <form action="http://localhost:2000" method="" onsubmit="submitData(event,this)">
+            <form class="apploginform">
+                <!-- onsubmit="submitData(event,this)" -->
                 <h2>Login</h2>
                 <div class="user-fill">
                     <div class="img-font-layout">
@@ -60,21 +61,19 @@
                         <div class="img-font-resposive">
                             <i class="fas fa-user-edit user-edit-font"></i>
                             <input type="file" name="image"
-                                onchange="editProfileImg('.profile-img','.profile-img-input')"
-                                class="profile-img-input form-field" onfocus="InputFocus(this)"
-                                onblur="InputBlur(this)"><br>
+                                class="profile-img-input form-field inputstate profile-img-changing"><br>
+                                <!-- onchange="editProfileImg('.profile-img','.profile-img-input')" -->
                             <label class="img-lable form-label">Profile Picture</label>
                         </div>
                     </div>
                 </div>
                 <div class="user-fill">
-                    <input type="text" name="name" id="user-name" required="" class="form-field"
-                        onfocus="InputFocus(this)" onblur="InputBlur(this)" />
+                    <input type="text" name="name" id="user-name" required="" class="form-field inputstate"/>
+                    <!-- onfocus="InputFocus(this)" onblur="InputBlur(this)" -->
                     <label class="labelName form-label">Name</label>
                 </div>
                 <div class="user-fill">
-                    <input type="text" name="email" id="user-email" required="" class="form-field"
-                        onfocus="InputFocus(this)" onblur="InputBlur(this)" />
+                    <input type="text" name="email" id="user-email" required="" class="form-field inputstate"/>
                     <label class="labelemail form-label">Email Address </label>
                 </div>
                 <div class="user-fill">
@@ -89,8 +88,7 @@
                     </select>
                 </div>
                 <div class="user-fill">
-                    <input type="password" name="password" id="user-password" required="" class="form-field"
-                        onfocus="InputFocus(this)" onblur="InputBlur(this)" />
+                    <input type="password" name="password" id="user-password" required="" class="form-field inputstate"/>
                     <label class="labelpassword form-label">Password</label>
                 </div>
                 <button type="submit" class="btn" id="submit">submit</button>

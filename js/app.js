@@ -20,14 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     appModule.init();
 });
 
-// function loginForm() {
-//     if (userData.length == 0) {
-//         document.body.style.background = "";
-//         popup.open(".login-form");
-//     } else {
-//         popup.open(".login-form");
-//     }
-// }
+var profileiImgChanging = document.querySelector(".profile-img-changing");
+profileiImgChanging.addEventListener("change", function () {
+    editProfileImg('.profile-img', '.profile-img-input');
+});
 
 function editProfileImg(x, y) {
     const profileImg = document.querySelector(x);
@@ -43,37 +39,27 @@ function editProfileImg(x, y) {
         reader.readAsDataURL(file);
     }
 }
-
-// function removeForm() {
-// if (userData.length == 0) {
-//     popup.close(".login-form");
-// } else {
-//     popup.close(".login-form");
-// }
-// form.reset();
-// userProfileImg.src = "img/user3.jpg";
-// for (i = 0; i < lablefocus.length; i++) {
-//     var lableTag = lablefocus[i];
-//     lableTag.classList.remove("lable-focus");
-// }
-// }
-
-// goBack button
-function goBack() {
-    popup.close(".userProfile");
+var inputState = document.querySelectorAll(".inputstate");
+for (var i = 0; i < inputState.length; i++) {
+    var inputItem = inputState[i];
+    inputItem.addEventListener("focus", function () {
+        var inputLable = this.nextElementSibling;
+        inputLable.classList.add("lable-focus");
+        this.style.borderBottomss = "1px solid #03e9f4"
+    })
+    inputItem.addEventListener("blur", function () {
+        var inputLable = this.nextElementSibling;
+        if (this.value == "") {
+            inputLable.classList.remove("lable-focus");
+        }
+    })
 }
 
-function InputFocus(el) {
-    var inputLable = el.nextElementSibling;
-    inputLable.classList.add("lable-focus");
-    el.style.borderBottomss = "1px solid #03e9f4"
-}
-function InputBlur(el) {
-    var inputLable = el.nextElementSibling;
-    if (el.value == "") {
-        inputLable.classList.remove("lable-focus");
-    }
-}
+
+var appLoginForm = document.querySelector(".apploginform");
+appLoginForm.addEventListener("submit", function (event) {
+    submitData(event, this);
+})
 
 function submitData(e, el) {
     // var formLable = document.querySelectorAll(".form-label");
@@ -84,17 +70,16 @@ function submitData(e, el) {
     } else {
         var button = document.querySelector("#submit");
         button.innerHTML = "submiting..."
-        const url = el.action
+        const url = "http://localhost:2000/creat-user"
         var payLoad = payLoadObject();
         $.post(url, payLoad, function (data, status) {
-            // alert("data save successfully !")
+            // console.log("data : " + data);
             if (data.responce == true) {
-                // toastNotification('data save successfully !!', true);
                 notification.success();
                 button.innerHTML = "submit";
-                creatList();
+                creatList(payLoad);
                 popup.close(".login-form");
-                document.body.style.background = "none";
+                document.body.style.background="none";
                 form.reset();
                 userProfileImg.src = "img/user3.jpg";
                 for (i = 0; i < lablefocus.length; i++) {
@@ -102,24 +87,20 @@ function submitData(e, el) {
                     lableTag.classList.remove("lable-focus");
                 }
             } else if (data.responce == false) {
-                // toastNotification('something is wrong!!', false);
                 notification.failed();
-                // throw e;
-                // alert("something is wrong !");
                 button.innerHTML = "submit";
             }
         }).catch(function (e) {
             console.log("something is wrong!", e);
-            // toastNotification('something is wrong!!', false);
             notification.failed();
             button.innerHTML = "submit";
-        })
+        });
     }
 }
 
 function payLoadObject() {
     var formFieldValues = document.querySelectorAll(".form-field");
-    var x = "";
+    // var x = "";
     var obj = {}
     for (i = 0; i < formFieldValues.length; i++) {
         var item = formFieldValues[i];
@@ -170,30 +151,24 @@ function formValidation() {
     }
 }
 
-function creatList() {
-    var obj = {};
-    const userProfileImg = document.querySelector(".profile-img");
-    $.get("http://localhost:2000/getdatabase",function(responce){
-       var  result = responce.results;
-        console.log("result : ", result);
-    });
+function creatList(payLoad) {
+     // get methode
+    //  $.get("http://localhost:2000/getdatabase", function (responce) {
+    //     var result = responce.results;
+    //     console.log("result : ", result);
+    // });
 
-    obj.name = userName.value;
-    obj.email = userEmail.value;
-    obj.profession = userprofession.value;
-    obj.img = userProfileImg.src;
-    if (userProfileImg.currentSrc == "") {
-        obj.img = "img/user3.jpg"
-    }
-    userData.push(obj);
-    // var data = userData[count]
+    var payLoadDataobj = JSON.parse(payLoad);
+    const userProfileImg = document.querySelector(".profile-img");
+    userData.push(payLoadDataobj);
+
     var Ulist = document.createElement("div");
     Ulist.innerHTML =
         "<div class='profile-layout'>" +
-        "<img src='" + obj.img + "' class='user-img'/>" +
+        "<img src='" + payLoadDataobj.image + "' class='user-img'/>" +
         // "<i class='fa fa-user user-font' aria-hidden='true'></i>" +
-        "<h2 class='user-display-name'>" + obj.name + "</h2>" +
-        "<span class='profession'>" + obj.profession + "</span>" +
+        "<h2 class='user-display-name'>" + payLoadDataobj.name + "</h2>" +
+        "<span class='profession'>" + payLoadDataobj.job + "</span>" +
         "<div class='social-media-account'>" +
         "<a href='https://www.facebook.com'><i class='fab fa-facebook-f'></i></a>" +
         "<a href='https://www.twitter.com'><i class='fab fa-twitter'></i></a>" +
@@ -202,117 +177,151 @@ function creatList() {
         "</div>";
     Ulist.classList.add("user");
     parentUserList.prepend(Ulist);
-    userList.style.display = "block";
-    applicationLayout.style.display = "none";
+    userList.style.display="block";
+    applicationLayout.style.display="none";
     // this function for display user profile
     Ulist.addEventListener("click", function () {
         popup.open(".userProfile");
-        var indexNo = userData.indexOf(obj);
+        var currentUser = this;
+        var indexNo = userData.indexOf(payLoadDataobj);
         userProfile.innerHTML =
             "<div>" +
-            "<i class='fas fa-trash-alt user-edit' onclick='deletUser(" + indexNo + ")'></i>" +
-            "<i class='fas fa-edit user-edit' onclick='edit(" + indexNo + ")'></i>" +
+            "<i class='fas fa-trash-alt user-edit deletfunctionlity'></i>" +
+            "<i class='fas fa-edit user-edit editfunctionlity')'></i>" +
             "</div>" +
             // "<i class='fa fa-user profile-font' aria-hidden='true'></i>" +
             "<div class='img-font-wrapper'>" +
-            "<img src='" + obj.img + "' class='p-img-editPage'/>" +
+            "<img src='" + payLoadDataobj.image + "' class='p-img-editPage'/>" +
             "<div class='img-font-input'>" +
             "<i class=\"fas fa-user-edit user-edit-profileFont\"></i>" +
-            "<input type='file'class='font-input' onchange='editProfileImg(\".p-img-editPage\",\".font-input\")'>" +
+            "<input type='file' name='image' class='font-input editIn profilechanging'>" +
             "</div>" +
             "</div>" +
             "<div>" +
-            "<h2>" + obj.name + "</h2>" +
-            "<span class='profession'>" + obj.profession + "</span>" +
-            "<span class='email'>" + obj.email + "</span>" +
+            "<h2>" + payLoadDataobj.name + "</h2>" +
+            "<span class='profession'>" + payLoadDataobj.job + "</span>" +
+            "<span class='email'>" + payLoadDataobj.email + "</span>" +
             "</div>" +
             // "<p id ='contact'>" + obj.contact + "</p>" +
-            "<button class='btn 'onclick='goBack()'>Go Back</button>";
-            // onclick='goBack()'
-    })
-    // form.reset();
-    // userProfileImg.src = "img/user3.jpg";
-    // //  userProfileImg.style.display = "none"
-    // for (i = 0; i < lablefocus.length; i++) {
-    //     var lableTag = lablefocus[i];
-    //     lableTag.classList.remove("lable-focus");
-    // }
+            "<button class='btn go-back-btn'>Go Back</button>";
+
+        var goBackBtn = userProfile.querySelector(".go-back-btn");
+        goBackBtn.addEventListener("click", function () {
+            popup.close(".userProfile");
+        });
+        var profileChanging = userProfile.querySelector(".profilechanging");
+        profileChanging.addEventListener("change", function () {
+            editProfileImg(".p-img-editPage", ".font-input")
+            // onchange='editProfileImg(\".p-img-editPage\",\".font-input\")'
+        });
+        var editFunctionlity = userProfile.querySelector(".editfunctionlity");
+        editFunctionlity.addEventListener("click", function () {
+            edit(payLoadDataobj, currentUser);
+        });
+        var deletFunctionlity = userProfile.querySelector(".deletfunctionlity");
+        deletFunctionlity.addEventListener("click", function () {
+            deletUser(indexNo);
+        });
+    });
 }
 
 //  edit peofile
 var alredyEditMode = false;
-function edit(indexNo) {
+function edit(payLoadDataobj, currentUser) {
     // save editaed data here
+    console.log(payLoadDataobj);
     if (alredyEditMode == true) return;
 
     alredyEditMode = true;
-    var editedData = userData[indexNo];
+    // var payLoadDataobj = userData[indexNo];
 
+    // get methode
+    //  $.get("http://localhost:2000/getdatabase", function (responce) {
+    //     var result = responce.results;
+    //     // console.log("result : ", result);
+    // });
 
     var saveBtn = document.createElement("button");
     saveBtn.innerHTML = "save"
-    saveBtn.classList.add("save-btn", "btn");
+    saveBtn.classList.add("btn");
     userProfile.append(saveBtn);
     const editProfileFont = document.querySelector(".user-edit-profileFont");
     var ProfileName = userProfile.querySelector("h2");
     var prfileProfession = userProfile.querySelector(".profession");
     var prfileEmail = userProfile.querySelector(".email");
-    // var prfileContact = userProfile.querySelector("#contact");
     var profileImage = userProfile.querySelector(".p-img-editPage");
     editProfileFont.style.visibility = "visible";
 
-    ProfileName.innerHTML = "<input type='text' name='name' placeholder='Name' value='" + editedData.name + "' class='edit-name edit-input'/>";
-    prfileProfession.innerHTML = "<input type='text' name='' placeholder='Profession' value='" + editedData.profession + "' class='edit-profession edit-input' />";
-    prfileEmail.innerHTML = "<input type='text' name='email' placeholder='Email' value='" + editedData.email + "' class='edit-email edit-input'/>";
-    // prfileContact.innerHTML = "<input type='number' placeholder ='Contact No' value='" + editedData.contact + "' id='edit-contact' class='edit-input'/>";
-    profileImage.src = editedData.img;
+    ProfileName.innerHTML = "<input type='text' name='name' placeholder='Name' value='" + payLoadDataobj.name + "' class='editIn edit-input'/>";
+    prfileProfession.innerHTML =
+    `<select name="job" required="" class="editIn edit-input">
+    <option>`+  payLoadDataobj.job +`</option>
+    <option>Student</option>
+    <option>Web Devloper</option>
+    <option>Software Engineer</option>
+    <option>Teacher</option>
+    <option>Army</option>
+    <option>Acter</option>
+    </select>`
+    // prfileProfession.innerHTML = "<input type='text' name='job' placeholder='Profession' value='" + payLoadDataobj.job + "' class='editIn edit-input' />";
+    prfileEmail.innerHTML = "<input type='text' name='email' placeholder='Email' value='" + payLoadDataobj.email + "' class='editIn edit-input'/>";
+    profileImage.src = payLoadDataobj.image;
 
     saveBtn.addEventListener("click", function () {
         alredyEditMode = false;
-        var saveName = document.querySelector(".edit-name");
-        var saveProfession = document.querySelector(".edit-profession");
-        var saveEmail = document.querySelector(".edit-email");
-        // var saveContact = document.getElementById("edit-contact");
-        var saveImage = profileImage;
+        var formValues = document.querySelectorAll(".editIn");
+        // var editobj = {}
+        for (i = 0; i < formValues.length; i++) {
+            var item = formValues[i];
+            var itemname = item.name;
+            var itemvalue = item.value;
+            if (itemname == "image") {
+                itemvalue = profileImage.getAttribute('src');;
+
+            }
+            payLoadDataobj[itemname] = itemvalue;
+        }
 
 
-        var userDisplayName = document.querySelectorAll(".user-display-name");
-        var userDisplayProfession = document.querySelectorAll(".profession");
-        var uderDisplayImage = document.querySelectorAll(".user img")
+        const url = "http://localhost:2000/update";
+        var payLoad = JSON.stringify(payLoadDataobj);
+        $.post(url, payLoad, function (data, status) {
+            if (data.responce == true) {
+                notification.Update();
 
-        editedData.name = saveName.value;
-        editedData.profession = saveProfession.value;
-        editedData.email = saveEmail.value;
-        // editedData.contact = saveContact.value;
-        editedData.img = saveImage.src;
-
-        ProfileName.innerHTML = saveName.value;
-        prfileProfession.innerHTML = saveProfession.value;
-        prfileEmail.innerHTML = saveEmail.value;
-        // prfileContact.innerHTML = saveContact.value;
-        profileImage.src = saveImage.src;
-        // userDisplayName
-
-        userDisplayName[indexNo].innerHTML = editedData.name;
-        userDisplayProfession[indexNo].innerHTML = editedData.profession;
-        uderDisplayImage[indexNo].src = editedData.img;
-        saveBtn.style.display = 'none';
+                ProfileName.innerHTML = payLoadDataobj.name;
+                prfileProfession.innerHTML = payLoadDataobj.job;
+                prfileEmail.innerHTML = payLoadDataobj.email;
+                profileImage.src = payLoadDataobj.image
+        
+                var userDisplayName = currentUser.querySelector(".user-display-name");
+                var userDisplayProfession = currentUser.querySelector(".profession");
+                var uderDisplayImage = currentUser.querySelector(".user img");
+        
+                userDisplayName.innerHTML = payLoadDataobj.name;
+                userDisplayProfession.innerHTML = payLoadDataobj.job;
+                uderDisplayImage.src = payLoadDataobj.image;
+                saveBtn.classList.add("hide");
+            }
+        });
+    
+        
     })
 
 }
 
 // deletUser
-    function deletUser(indexNo) {
-        var deletAction = confirm(" You Want To Delet This User ? ")
-        if (deletAction == true) {
-            var userDisplayName = document.querySelectorAll(".user-display-name");
-            if (indexNo > -1) {
-                userData.splice(indexNo, 1);
-                // var nodlistArr = Array.from(userDisplayName);
-                // nodlistArr.splice(indexNo, 1);
-                userDisplayName[indexNo].parentNode.parentNode.remove();
-                popup.close(".userProfile");
-            }
+function deletUser(indexNo) {
+    var deletAction = confirm(" You Want To Delet This User ? ")
+    if (deletAction == true) {
+        var userDisplayName = document.querySelectorAll(".user-display-name");
+        if (indexNo > -1) {
+            userData.splice(indexNo, 1);
+            // var nodlistArr = Array.from(userDisplayName);
+            // nodlistArr.splice(indexNo, 1);
+            userDisplayName[indexNo].parentNode.parentNode.remove();
+            popup.close(".userProfile");
         }
     }
+}
 

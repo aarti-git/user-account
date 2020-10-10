@@ -315,3 +315,8 @@ function edit(indexNo) {
         }
     }
 }
+// how to user get methode
+// $.get("http://localhost:2000/getdatabase", function (responce) {
+//     var result = responce.results;
+//     console.log("result : ", result);
+// });

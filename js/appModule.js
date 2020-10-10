@@ -1,9 +1,15 @@
 var appModule = {
-    userdata: [],
+    userData: [],
     init: function () {
         popup.init();
         notification.init();
-
+        // if(userData.length == 0){
+        //     userList.classList.add("hide");
+        // }else{
+        //     applicationLayout.classList.add("hide");
+        //     userList.classList.remove("hide");
+        //     // document.body.style.display="none";
+        // }
         // loginform open
         var addBtn = document.querySelector(".add-btn");
         addBtn.addEventListener("click", function () {
@@ -33,14 +39,6 @@ var appModule = {
             }
         })
 
-        // go back 
-        // var goBackBtn = userList.querySelector(".go-back-btn");
-        // if(!goBackBtn){
-        //     return;
-        // };
-        // goBackBtn.addEventListener("click", function(){
-        //     popup.close(".userProfile");
-        // })
 
 
     },
