@@ -151,12 +151,6 @@ function formValidation() {
 }
 
 function creatList(payLoadDataobj) {
-  // get methode
-  //  $.get("http://localhost:2000/getdatabase", function (responce) {
-  //     var result = responce.results;
-  //     console.log("result : ", result);
-  // });
-
   // var payLoadDataobj = JSON.parse(payLoad);
   const userProfileImg = document.querySelector(".profile-img");
   userData.push(payLoadDataobj);
@@ -216,7 +210,7 @@ function creatList(payLoadDataobj) {
       "</span>" +
       "</div>" +
       // "<p id ='contact'>" + obj.contact + "</p>" +
-      "<button class='btn go-back-btn'>Go Back</button>";
+      "<div class='btn-wrap'><div class='btn-parent'><button class='btn go-back-btn'>Go Back</button></div></div>";
 
     var goBackBtn = userProfile.querySelector(".go-back-btn");
     goBackBtn.addEventListener("click", function () {
@@ -233,7 +227,7 @@ function creatList(payLoadDataobj) {
     });
     var deletFunctionlity = userProfile.querySelector(".deletfunctionlity");
     deletFunctionlity.addEventListener("click", function () {
-      deletUser(indexNo);
+      deletUser(payLoadDataobj, currentUser);
     });
   });
 }
@@ -246,18 +240,12 @@ function edit(payLoadDataobj, currentUser) {
   if (alredyEditMode == true) return;
 
   alredyEditMode = true;
-  // var payLoadDataobj = userData[indexNo];
-
-  // get methode
-  //  $.get("http://localhost:2000/getdatabase", function (responce) {
-  //     var result = responce.results;
-  //     // console.log("result : ", result);
-  // });
 
   var saveBtn = document.createElement("button");
   saveBtn.innerHTML = "save";
   saveBtn.classList.add("btn");
-  userProfile.append(saveBtn);
+  var btnParent = userProfile.querySelector(".btn-parent");
+  btnParent.append(saveBtn);
   const editProfileFont = document.querySelector(".user-edit-profileFont");
   var ProfileName = userProfile.querySelector("h2");
   var prfileProfession = userProfile.querySelector(".profession");
@@ -327,16 +315,22 @@ function edit(payLoadDataobj, currentUser) {
 }
 
 // deletUser
-function deletUser(indexNo) {
+function deletUser(payLoadDataobj, currentUser) {
   var deletAction = confirm(" You Want To Delet This User ? ");
   if (deletAction == true) {
-    var userDisplayName = document.querySelectorAll(".user-display-name");
-    if (indexNo > -1) {
-      userData.splice(indexNo, 1);
-      // var nodlistArr = Array.from(userDisplayName);
-      // nodlistArr.splice(indexNo, 1);
-      userDisplayName[indexNo].parentNode.parentNode.remove();
+    const url = "http://localhost:2000/delete";
+    var payLoad = JSON.stringify(payLoadDataobj);
+    $.post(url, payLoad, function (data, status) {
+      currentUser.remove();
       popup.close(".userProfile");
-    }
+    });
   }
 }
+// var userDisplayName = document.querySelectorAll(".user-display-name");
+// if (indexNo > -1) {
+//   userData.splice(indexNo, 1);
+//   // var nodlistArr = Array.from(userDisplayName);
+//   // nodlistArr.splice(indexNo, 1);
+//   userDisplayName[indexNo].parentNode.parentNode.remove();
+//   popup.close(".userProfile");
+// }

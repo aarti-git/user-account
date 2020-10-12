@@ -1,5 +1,4 @@
 var appModule = {
-  userData: [],
   init: function () {
     popup.init();
     notification.init();
@@ -21,6 +20,10 @@ var appModule = {
           creatList(payLoad);
         }
       }
+      var deletFunctionlity = userProfile.querySelector(".deletfunctionlity");
+      deletFunctionlity.addEventListener("click", function () {
+        deletUser(payLoad, currentUser);
+      });
     });
 
     // loginform open

@@ -115,6 +115,26 @@ var server = http.createServer(function (req, res) {
           res.end();
         });
       });
+    } else if (route.pathname == "/delete") {
+      var payLoad = "";
+      req.on("data", function (data) {
+        payLoad += data;
+      });
+      req.on("end", function () {
+        payLoad = JSON.parse(payLoad);
+        const deleteRow = `DELETE FROM users WHERE id = ` + payLoad.id;
+        connection.query(deleteRow, function (eroor, results, fields) {
+          if (eroor) {
+            res.write(JSON.stringify({ responce: false, ...error }));
+            res.end();
+            // throw error;
+            return;
+          }
+          res.write(JSON.stringify({ responce: true }));
+          console.log("Record Updated!");
+          res.end();
+        });
+      });
     }
   }
 });
