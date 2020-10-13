@@ -1,7 +1,6 @@
 var http = require("http");
 var mysql = require("mysql");
 var url = require("url");
-
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -60,7 +59,7 @@ var server = http.createServer(function (req, res) {
         // console.log(payLoad);
         payLoad = JSON.parse(payLoad);
         const str =
-          "insert into users (fname, email,job, pwd, image) values ('" +
+          "insert into users (fname, email,job, pwd, image,facebook,twitter,linkedin) values ('" +
           payLoad.fname +
           "', '" +
           payLoad.email +
@@ -70,6 +69,12 @@ var server = http.createServer(function (req, res) {
           payLoad.password +
           "', '" +
           payLoad.image +
+          "', '" +
+          payLoad.facebook +
+          "', '" +
+          payLoad.twitter +
+          "', '" +
+          payLoad.linkedin +
           "')";
         connection.query(str, function (error, results, fields) {
           if (error) {
@@ -101,6 +106,12 @@ var server = http.createServer(function (req, res) {
           payLoad.job +
           `",image="` +
           payLoad.image +
+          `",facebook="` +
+          payLoad.facebook +
+          `",twitter="` +
+          payLoad.twitter +
+          `",linkedin="` +
+          payLoad.linkedin +
           `" WHERE id = ` +
           payLoad.id;
         connection.query(updatedstr, function (eroor, results, fields) {

@@ -32,7 +32,7 @@
         <div class="list-layout">
             <div class="list-parent">
                 <div class="add-user">
-                <!-- onclick="loginForm()" -->  
+                    <!-- onclick="loginForm()" -->
                     <button class="add-btn2">+</button>
                     <div>Creat User</div>
                 </div>
@@ -42,64 +42,88 @@
     <section class="display-area">
         <div class="userProfile hide"></div>
     </section>
-
-    <!-- <section class="form-section"> -->
-        <!-- <div class="overlay"> -->
-        <div class="login-form hide">
-            <div class="support-parent">
-                <div class="remove-form">
-                    <!-- onclick="removeForm()" -->
-                    <button class="remove-form-btn">x</button>
-                </div>
+    <!-- new section -->
+    <div class="login-form hide">
+        <div class="support-parent">
+            <div class="remove-form">
+                <!-- onclick="removeForm()" -->
+                <button class="remove-form-btn">x</button>
             </div>
-            <form class="apploginform">
-                <!-- onsubmit="submitData(event,this)" -->
-                <h2>Login</h2>
-                <div class="user-fill">
-                    <div class="img-font-layout">
-                        <img src="img/user3.jpg" class="profile-img">
-                        <div class="img-font-resposive">
-                            <i class="fas fa-user-edit user-edit-font"></i>
-                            <input type="file" name="image"
-                                class="profile-img-input form-field inputstate profile-img-changing"><br>
-                                <!-- onchange="editProfileImg('.profile-img','.profile-img-input')" -->
-                            <label class="img-lable form-label">Profile Picture</label>
-                        </div>
+        </div>
+        <form class="apploginform">
+            <!-- onsubmit="submitData(event,this)" -->
+            <h2>Login</h2>
+            <div class="user-fill">
+                <div class="img-font-layout">
+                    <img src="img/user3.jpg" class="profile-img">
+                    <div class="img-font-resposive">
+                        <i class="fas fa-user-edit user-edit-font"></i>
+                        <input type="file" name="image"
+                            class="profile-img-input form-field inputstate profile-img-changing"><br>
+                        <!-- onchange="editProfileImg('.profile-img','.profile-img-input')" -->
+                        <label class="img-lable form-label">Profile Picture</label>
                     </div>
                 </div>
+            </div>
+            <div class="inf-fill-section">
+                <div class="section-tittle">
+                    <h3>personal info</h3>
+                </div>
                 <div class="user-fill">
-                    <input type="text" name="fname" id="user-name" required="" class="form-field inputstate"/>
+                    <input type="text" name="fname" id="user-name" required="" class="form-field inputstate" />
                     <!-- onfocus="InputFocus(this)" onblur="InputBlur(this)" -->
                     <label class="labelName form-label">Name</label>
                 </div>
                 <div class="user-fill">
-                    <input type="text" name="email" id="user-email" required="" class="form-field inputstate"/>
+                    <input type="text" name="email" id="user-email" required="" class="form-field inputstate" />
                     <label class="labelemail form-label">Email Address </label>
                 </div>
                 <div class="user-fill">
-                    <select id="user-profession" name="job" required="" class="form-field selector-css">
-                        <option>Select Your Profession</option>
+                    <input type="text" name="" required="" class="form-field inputstate job-input" />
+                    <label class="labelProfession form-label">Profession</label>
+                    <select id="user-profession" name="job" required=""
+                        class="form-field selector-css Profession-select-box">
+                        <option value="">Select Your Profession</option>
                         <option>Student</option>
                         <option>Web Devloper</option>
                         <option>Software Engineer</option>
                         <option>Teacher</option>
                         <option>Army</option>
                         <option>Acter</option>
+                        <option>writer</option>
                     </select>
                 </div>
                 <div class="user-fill">
-                    <input type="password" name="password" id="user-password" required="" class="form-field inputstate"/>
+                    <input type="password" name="password" id="user-password" required=""
+                        class="form-field inputstate" />
                     <label class="labelpassword form-label">Password</label>
                 </div>
+            </div>
+            <div class="inf-fill-section">
+                <div class="section-tittle">
+                    <h3>social info</h3>
+                </div>
+                <div class="user-fill">
+                    <input type="text" name="facebook" id="user-facebook" class="form-field inputstate" />
+                    <label class="labelpassword form-label">Facebook Link</label>
+                </div>
+                <div class="user-fill">
+                    <input type="text" name="twitter" id="user-twitter" class="form-field inputstate" />
+                    <label class="labelpassword form-label">Twitter Link</label>
+                </div>
+                <div class="user-fill">
+                    <input type="text" name="linkedin" id="user-linkdin" class="form-field inputstate" />
+                    <label class="labelpassword form-label">Linkedin Link</label>
+                </div>
+            </div>
+            <div>
                 <button type="submit" class="btn" id="submit">submit</button>
-                <!-- onclick="toastNotification('your login successfully !!',true)" -->
-                <!-- <input type="reset" value="reset" class="btn reset-btn"> -->
-                <!-- <button type="submit" class="btn"
-                        onclick="toastNotification('failed to login ..try agin',false)">submit2</button> -->
-            </form>
-            <!-- </div> -->
-        </div>
-    <!-- </section> -->
+                <!-- <button><input type="reset" value="reset" class="btn"></button> -->
+            </div>
+        </form>
+
+    </div>
+
     <section class="toast-notification"></section>
 
 </body>

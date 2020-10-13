@@ -64,13 +64,26 @@ body {
   backdrop-filter: blur(4px);
   z-index: 2;
 }
+.DesplayElcss {
+  overflow: auto;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
 
 .login-form {
   background-color: #fff;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   align-self: center;
   box-shadow: 0 0px 12px rgb(0 0 0 / 40%);
   border-radius: 5px;
@@ -84,44 +97,71 @@ body {
   font-size: 30px;
   font-weight: 400;
 }
+.inf-fill-section{
+  margin-bottom: 50px;
+}
+.section-tittle{
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
 .user-fill {
   position: relative;
+  margin-bottom: 25px;
+
 }
 
-.lable-focus {
-  top: -22px !important;
-  left: 0px !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  transition-duration: 0.5s !important;
+.form-label.lable-focus {
+  top: -14px;
+  left: 0px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #969595e8;
 }
 
 .login-form input,
 #user-profession {
-  font-size: 16px;
-  padding: 3px 0px 0;
-  margin: 17px 0px;
+  font-size: 13px;
   width: 100%;
   height: 35px;
   border: 0;
   border-bottom: 1px solid;
   outline: none;
-  font-weight: 200;
+  font-weight: 400;
   font-family: "roboto";
-  background-color: white;
+  /* color: #8c8c8c; */
 }
 #user-name {
   text-transform: capitalize;
 }
+/* .Profession-input{
+  
+} */
+/* .job-input:focus .labelProfession{
+  top: -32px;
+  left: 0px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #757474;
+} */
+.Profession-select-box{
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .form-label {
   position: absolute;
-  top: 5px;
+  top: 10px;
   left: 0px;
   pointer-events: none;
-  padding: 20px 0 10px;
-  font-size: 16px;
+  font-size: 13px;
   transition: 0.5s;
-  font-weight: 200;
+  font-weight: 400;
+  color: #8c8c8c;
 }
 /* .login-form input:valid ~ .form-label,
 .login-form input:focus ~ .form-label{
@@ -154,10 +194,11 @@ input:-webkit-autofill:active {
 .btn-parent {
   display: table;
   margin: 0px -15px;
+  margin-top: 20px;
 }
-.btn:hover {
+/* .btn:hover {
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .btn {
   background-color: white;
@@ -166,12 +207,13 @@ input:-webkit-autofill:active {
   border-radius: 2px;
   color: #777676;
   display: inline-block;
-  margin: 30px 15px;
   border: 0;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
   outline: none;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  margin: 0 15px;
 }
 .profile-img-input {
   opacity: 0;
@@ -318,13 +360,13 @@ input:-webkit-autofill:active {
   border-radius: 2px;
   outline: none;
 }
-.reset-btn {
+/* .reset-btn {
   background-color: royalblue !important;
   padding: 7px 15px !important;
   font-size: 15px !important;
   width: unset !important;
   outline: none !important;
-}
+} */
 
 /*  */
 .user-list {
@@ -368,8 +410,8 @@ input:-webkit-autofill:active {
   text-align: center;
 }
 .user-img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -435,6 +477,7 @@ input:-webkit-autofill:active {
 .social-media-account i:hover {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
+  color: #5b78cd;
 }
 .social-media-account i {
   margin: 0px 4px;
@@ -443,19 +486,6 @@ input:-webkit-autofill:active {
   height: 30px;
   padding: 7px;
   text-align: center;
-}
-.DesplayElcss {
-  overflow: auto;
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 .display-area {
   display: inline-flex;
@@ -498,7 +528,6 @@ input:-webkit-autofill:active {
   height: 35px;
   padding-top: 10px;
 }
-
 .profile-font {
   font-size: 100px;
   border-radius: 50%;
@@ -590,8 +619,12 @@ input:-webkit-autofill:active {
   outline: none;
   color: #494848;
 }
+.edit-link i{
+  margin: 10px;
+
+}
 /* this is table screen css */
-@media only screen and (max-width: 1024px) and (max-height: 400px) {
+/* @media only screen and (max-width: 1024px) and (max-height: 400px) {
   .DesplayElcss {
     justify-content: unset;
   }
@@ -601,7 +634,7 @@ input:-webkit-autofill:active {
     left: 0;
     transform: unset;
   }
-}
+} */
 @media only screen and (max-width: 1024px) {
   .logo-add button {
     font-size: 80px;
@@ -646,10 +679,10 @@ input:-webkit-autofill:active {
     font-size: 11px;
     padding: 4px;
   }
-  .login-form input,
+  /* .login-form input,
   #user-profession {
     margin: 16px 0px;
-  }
+  } */
   .list-layout {
     width: 85%;
     margin-top: 60px;

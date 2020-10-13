@@ -14,8 +14,6 @@ const userpassword = document.getElementById("user-password");
 const lablefocus = document.querySelectorAll("label");
 // const userContact = document.getElementById("user-contact");
 
-var userData = [];
-
 document.addEventListener("DOMContentLoaded", function () {
   appModule.init();
 });
@@ -23,6 +21,24 @@ document.addEventListener("DOMContentLoaded", function () {
 var profileiImgChanging = document.querySelector(".profile-img-changing");
 profileiImgChanging.addEventListener("change", function () {
   editProfileImg(".profile-img", ".profile-img-input");
+});
+
+userprofession.addEventListener("change", function () {
+  var professionInput = this.parentNode.firstElementChild;
+  professionInput.value = this.value;
+  // professionInput.nextElementSibling.classList.add("lable-focus");
+})
+
+userprofession.addEventListener("focus", function () {
+  var professionInput = this.parentNode.firstElementChild;
+  professionInput.nextElementSibling.classList.add("lable-focus");
+});
+
+userprofession.addEventListener("blur", function () {
+  if (this.value == "") {
+    var professionInput = this.parentNode.firstElementChild;
+    professionInput.nextElementSibling.classList.remove("lable-focus");
+  }
 });
 
 function editProfileImg(x, y) {
@@ -151,9 +167,7 @@ function formValidation() {
 }
 
 function creatList(payLoadDataobj) {
-  // var payLoadDataobj = JSON.parse(payLoad);
   const userProfileImg = document.querySelector(".profile-img");
-  userData.push(payLoadDataobj);
 
   var Ulist = document.createElement("div");
   Ulist.innerHTML =
@@ -169,9 +183,9 @@ function creatList(payLoadDataobj) {
     payLoadDataobj.job +
     "</span>" +
     "<div class='social-media-account'>" +
-    "<a href='https://www.facebook.com'><i class='fab fa-facebook-f'></i></a>" +
-    "<a href='https://www.twitter.com'><i class='fab fa-twitter'></i></a>" +
-    "<a href='https://www.linkedin.com/'><i class='fab fa-linkedin'></i></a>" +
+    "<a href='" + payLoadDataobj.facebook + "' target='_blank'><i class='fab fa-facebook-f'></i></a>" +
+    "<a href='" + payLoadDataobj.twitter + "' target='_blank'><i class='fab fa-twitter'></i></a>" +
+    "<a href='" + payLoadDataobj.linkedin + "' target='_blank'><i class='fab fa-linkedin'></i></a>" +
     "</div>" +
     "</div>";
   Ulist.classList.add("user");
@@ -182,7 +196,6 @@ function creatList(payLoadDataobj) {
   Ulist.addEventListener("click", function () {
     popup.open(".userProfile");
     var currentUser = this;
-    var indexNo = userData.indexOf(payLoadDataobj);
     userProfile.innerHTML =
       "<div>" +
       "<i class='fas fa-trash-alt user-edit deletfunctionlity'></i>" +
@@ -198,7 +211,7 @@ function creatList(payLoadDataobj) {
       "<input type='file' name='image' class='font-input editIn profilechanging'>" +
       "</div>" +
       "</div>" +
-      "<div>" +
+      "<div class='edit-input-area'>" +
       "<h2>" +
       payLoadDataobj.fname +
       "</h2>" +
@@ -208,6 +221,11 @@ function creatList(payLoadDataobj) {
       "<span class='email'>" +
       payLoadDataobj.email +
       "</span>" +
+      "<div class='edit-link'>" +
+      "<i class='fab fa-facebook-f facebook-font'></i></a>" +
+      "<i class='fab fa-twitter'></i></a>" +
+      "<i class='fab fa-linkedin'></i></a>" +
+      "</div>" +
       "</div>" +
       // "<p id ='contact'>" + obj.contact + "</p>" +
       "<div class='btn-wrap'><div class='btn-parent'><button class='btn go-back-btn'>Go Back</button></div></div>";
@@ -236,7 +254,7 @@ function creatList(payLoadDataobj) {
 var alredyEditMode = false;
 function edit(payLoadDataobj, currentUser) {
   // save editaed data here
-  console.log(payLoadDataobj);
+  // console.log(payLoadDataobj);
   if (alredyEditMode == true) return;
 
   alredyEditMode = true;
@@ -251,6 +269,8 @@ function edit(payLoadDataobj, currentUser) {
   var prfileProfession = userProfile.querySelector(".profession");
   var prfileEmail = userProfile.querySelector(".email");
   var profileImage = userProfile.querySelector(".p-img-editPage");
+  var editLink = userProfile.querySelector(".edit-link");
+  var editInputArea =userProfile.querySelector(".edit-input-area")
   editProfileFont.style.visibility = "visible";
 
   ProfileName.innerHTML =
@@ -268,13 +288,25 @@ function edit(payLoadDataobj, currentUser) {
     <option>Teacher</option>
     <option>Army</option>
     <option>Acter</option>
+    <option>writer</option>
     </select>`;
-  // prfileProfession.innerHTML = "<input type='text' name='job' placeholder='Profession' value='" + payLoadDataobj.job + "' class='editIn edit-input' />";
   prfileEmail.innerHTML =
     "<input type='text' name='email' placeholder='Email' value='" +
     payLoadDataobj.email +
     "' class='editIn edit-input'/>";
+
   profileImage.src = payLoadDataobj.image;
+  // facebookFont.innerHTML = "<input type='text' name='facebook' placeholder='facebook link ' value='" + payLoadDataobj.facebook +
+  // "' class='editIn edit-input'/>";
+
+  var creatfacebookInput =document.createElement("div");
+  creatfacebookInput.classList.add("creatfacebookInput")
+  creatfacebookInput.innerHTML = "<input type='text' name='facebook' placeholder='facebook link ' value='" + payLoadDataobj.facebook + "' class='editIn edit-input'/>"+
+  "<input type='text' name='twitter' placeholder='twitter link ' value='" + payLoadDataobj.twitter + "' class='editIn edit-input'/>"+
+  "<input type='text' name='twitter' placeholder='twitter link ' value='" + payLoadDataobj.twitter + "' class='editIn edit-input'/>";
+  editInputArea.append(creatfacebookInput);
+
+  editLink.classList.add("hide");
 
   saveBtn.addEventListener("click", function () {
     alredyEditMode = false;
@@ -301,6 +333,10 @@ function edit(payLoadDataobj, currentUser) {
         prfileEmail.innerHTML = payLoadDataobj.email;
         profileImage.src = payLoadDataobj.image;
 
+        editLink.classList.remove("hide");
+        var creatfacebookInput = userProfile.querySelector(".creatfacebookInput")
+        creatfacebookInput.classList.add("hide");
+
         var userDisplayName = currentUser.querySelector(".user-display-name");
         var userDisplayProfession = currentUser.querySelector(".profession");
         var uderDisplayImage = currentUser.querySelector(".user img");
@@ -322,15 +358,9 @@ function deletUser(payLoadDataobj, currentUser) {
     var payLoad = JSON.stringify(payLoadDataobj);
     $.post(url, payLoad, function (data, status) {
       currentUser.remove();
+      notification.Delete();
       popup.close(".userProfile");
     });
   }
 }
-// var userDisplayName = document.querySelectorAll(".user-display-name");
-// if (indexNo > -1) {
-//   userData.splice(indexNo, 1);
-//   // var nodlistArr = Array.from(userDisplayName);
-//   // nodlistArr.splice(indexNo, 1);
-//   userDisplayName[indexNo].parentNode.parentNode.remove();
-//   popup.close(".userProfile");
-// }
+
