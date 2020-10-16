@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="img/pink-flower.jpeg" class="img">
+    <input type="file" name='file' onchange="uplodeImage()" class="input">
+</body>
+<script>
+    function uplodeImage(){
+       var img = document.querySelector(".img") ;
+       var file = document.querySelector(".input").files[0];
+       var reader = new FileReader();
+       reader.addEventListener("load",function(){
+           img.src= reader.result;
+       },false)
+
+       if(file){
+            reader.readAsDataURL(file);
+       }
+    }
+</script>
+</html>

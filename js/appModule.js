@@ -1,7 +1,7 @@
 var appModule = {
     init: function () {
         popup.init();
-        notification.init();
+        toastMessage.init();
         // get methode
         $.get("http://localhost:2000/getdatabase", function (responce) {
             var result = responce.results;

@@ -94,7 +94,7 @@ function submitData(e, el) {
     $.post(url, payLoad, function (data, status) {
       // console.log("data : " + data);
       if (data.responce == true) {
-        notification.success();
+        toastMessage.success("data save successfully!!!");
         button.innerHTML = "submit";
         var payLoadDataobj = JSON.parse(payLoad);
         creatList(payLoadDataobj);
@@ -107,12 +107,12 @@ function submitData(e, el) {
           lableTag.classList.remove("lable-focus");
         }
       } else if (data.responce == false) {
-        notification.failed();
+        toastMessage.failed("something is wrong");
         button.innerHTML = "submit";
       }
     }).catch(function (e) {
       console.log("something is wrong!", e);
-      notification.failed();
+      toastMessage.failed("something is wrong");
       button.innerHTML = "submit";
     });
   }
@@ -135,6 +135,12 @@ function payLoadObject() {
   }
   return JSON.stringify(obj);
 }
+
+// base64 start
+// function base64apload(base64){
+//   console.log(base64);
+// }    
+// base64 end
 
 function CreatUserList() {
   var isFormValid = formValidation();
@@ -167,7 +173,7 @@ function formValidation() {
 }
 
 function creatList(payLoadDataobj) {
-  const userProfileImg = document.querySelector(".profile-img");
+  // const userProfileImg = document.querySelector(".profile-img");
 
   var Ulist = document.createElement("div");
   Ulist.innerHTML =
@@ -195,6 +201,8 @@ function creatList(payLoadDataobj) {
   // this function for display user profile
   Ulist.addEventListener("click", function () {
     popup.open(".userProfile");
+    var DesplayElcss = document.querySelector(".DesplayElcss");
+    DesplayElcss.classList.add("flex-content-justify")
     var currentUser = this;
     userProfile.innerHTML =
       "<div>" +
@@ -211,7 +219,7 @@ function creatList(payLoadDataobj) {
       "<input type='file' name='image' class='font-input editIn profilechanging'>" +
       "</div>" +
       "</div>" +
-      "<div class='edit-input-area'>" +
+      "<div class='edit-input-area-parent'><div class='edit-input-area'>" +
       "<h2>" +
       payLoadDataobj.fname +
       "</h2>" +
@@ -226,13 +234,14 @@ function creatList(payLoadDataobj) {
       "<i class='fab fa-twitter'></i></a>" +
       "<i class='fab fa-linkedin'></i></a>" +
       "</div>" +
-      "</div>" +
+      "</div></div>" +
       // "<p id ='contact'>" + obj.contact + "</p>" +
       "<div class='btn-wrap'><div class='btn-parent'><button class='btn go-back-btn'>Go Back</button></div></div>";
 
     var goBackBtn = userProfile.querySelector(".go-back-btn");
     goBackBtn.addEventListener("click", function () {
       popup.close(".userProfile");
+      alredyEditMode = false;
     });
     var profileChanging = userProfile.querySelector(".profilechanging");
     profileChanging.addEventListener("change", function () {
@@ -256,9 +265,9 @@ function edit(payLoadDataobj, currentUser) {
   // save editaed data here
   // console.log(payLoadDataobj);
   if (alredyEditMode == true) return;
-
   alredyEditMode = true;
-
+  var DesplayElcss = document.querySelector(".DesplayElcss");
+  DesplayElcss.classList.remove("flex-content-justify")
   var saveBtn = document.createElement("button");
   saveBtn.innerHTML = "save";
   saveBtn.classList.add("btn");
@@ -270,41 +279,42 @@ function edit(payLoadDataobj, currentUser) {
   var prfileEmail = userProfile.querySelector(".email");
   var profileImage = userProfile.querySelector(".p-img-editPage");
   var editLink = userProfile.querySelector(".edit-link");
-  var editInputArea =userProfile.querySelector(".edit-input-area")
+  var editInputAreaParent = userProfile.querySelector(".edit-input-area-parent");
+  var editInputArea = userProfile.querySelector(".edit-input-area")
   editProfileFont.style.visibility = "visible";
 
-  ProfileName.innerHTML =
-    "<input type='text' name='fname' placeholder='Name' value='" +
-    payLoadDataobj.fname +
-    "' class='editIn edit-input'/>";
-  prfileProfession.innerHTML =
-    `<select name="job" required="" class="editIn edit-input">
-    <option>` +
-    payLoadDataobj.job +
-    `</option>
-    <option>Student</option>
-    <option>Web Devloper</option>
-    <option>Software Engineer</option>
-    <option>Teacher</option>
-    <option>Army</option>
-    <option>Acter</option>
-    <option>writer</option>
-    </select>`;
-  prfileEmail.innerHTML =
-    "<input type='text' name='email' placeholder='Email' value='" +
-    payLoadDataobj.email +
-    "' class='editIn edit-input'/>";
+  editInputArea.classList.add("hide")
+  var crateditForm = document.createElement("div");
+  crateditForm.classList.add("crat-edit-Form")
+  crateditForm.innerHTML =
+    `<div class="inf-fill-section">
+      <div class="section-tittle tittle-design">
+        <h3>personal info</h3>
+      </div>
+      <input type='text' name='fname' placeholder='Name' value='${payLoadDataobj.fname}' class='editIn edit-input'/>
+      <select name="job" required="" class="editIn edit-input edit-select-box">
+        <option>${payLoadDataobj.job}</option>
+        <option>Student</option>
+        <option>Web Devloper</option>
+        <option>Software Engineer</option>
+        <option>Teacher</option>
+        <option>Army</option>
+        <option>Acter</option>
+        <option>writer</option>
+      </select>
+      <input type='text' name='email' placeholder='Email' value='${payLoadDataobj.email}' class='editIn edit-input'/>
+    </div>
+    <div class="inf-fill-section">
+      <div class="section-tittle tittle-design">
+          <h3>social info</h3>
+      </div>
+      <input type='text' name='facebook' placeholder='facebook link ' value='${payLoadDataobj.facebook}' class='editIn edit-input'/>
+      <input type='text' name='twitter' placeholder='twitter link ' value='${payLoadDataobj.twitter}' class='editIn edit-input'/>
+      <input type='text' name='twitter' placeholder='twitter link ' value='${payLoadDataobj.twitter}' class='editIn edit-input'/>
+    </div>` 
 
+  editInputAreaParent.append(crateditForm);
   profileImage.src = payLoadDataobj.image;
-  // facebookFont.innerHTML = "<input type='text' name='facebook' placeholder='facebook link ' value='" + payLoadDataobj.facebook +
-  // "' class='editIn edit-input'/>";
-
-  var creatfacebookInput =document.createElement("div");
-  creatfacebookInput.classList.add("creatfacebookInput")
-  creatfacebookInput.innerHTML = "<input type='text' name='facebook' placeholder='facebook link ' value='" + payLoadDataobj.facebook + "' class='editIn edit-input'/>"+
-  "<input type='text' name='twitter' placeholder='twitter link ' value='" + payLoadDataobj.twitter + "' class='editIn edit-input'/>"+
-  "<input type='text' name='twitter' placeholder='twitter link ' value='" + payLoadDataobj.twitter + "' class='editIn edit-input'/>";
-  editInputArea.append(creatfacebookInput);
 
   editLink.classList.add("hide");
 
@@ -326,7 +336,7 @@ function edit(payLoadDataobj, currentUser) {
     var payLoad = JSON.stringify(payLoadDataobj);
     $.post(url, payLoad, function (data, status) {
       if (data.responce == true) {
-        notification.Update();
+        toastMessage.Update("data update successfuly!!!");
 
         ProfileName.innerHTML = payLoadDataobj.fname;
         prfileProfession.innerHTML = payLoadDataobj.job;
@@ -334,8 +344,9 @@ function edit(payLoadDataobj, currentUser) {
         profileImage.src = payLoadDataobj.image;
 
         editLink.classList.remove("hide");
-        var creatfacebookInput = userProfile.querySelector(".creatfacebookInput")
-        creatfacebookInput.classList.add("hide");
+        editInputArea.classList.remove("hide")
+        var cratEditForm = userProfile.querySelector(".crat-edit-Form")
+        cratEditForm.classList.add("hide");
 
         var userDisplayName = currentUser.querySelector(".user-display-name");
         var userDisplayProfession = currentUser.querySelector(".profession");
@@ -358,7 +369,7 @@ function deletUser(payLoadDataobj, currentUser) {
     var payLoad = JSON.stringify(payLoadDataobj);
     $.post(url, payLoad, function (data, status) {
       currentUser.remove();
-      notification.Delete();
+      toastMessage.Delete("data delete successfully!!");
       popup.close(".userProfile");
     });
   }
