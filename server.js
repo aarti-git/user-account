@@ -4,7 +4,7 @@ var url = require("url");
 var fs = require("fs");
 const dotenv = require("dotenv");
 dotenv.config();
-
+var base64;
 function base64loadimage(imageBase64) {
   const rx = /^data:image\/[a-z]+;base64,/i
   const leftStr = imageBase64.match(rx)[0]
@@ -50,7 +50,7 @@ var server = http.createServer(function (req, res) {
         }
         // console.log(results);
         // res.write("this is get methode : /getdatabase")
-        console.log("userData count is : " + results.length);
+        // console.log("userData count is : " + results.length);
         res.write(JSON.stringify({ results }));
         res.end();
         return;
@@ -69,7 +69,7 @@ var server = http.createServer(function (req, res) {
         // console.log(payLoad);
         payLoad = JSON.parse(payLoad);
         // base64 image uploade
-        var base64 = payLoad.image;
+        base64 = payLoad.image;
         payLoad.image = base64loadimage(base64);
         const str =
           "insert into users (fname, email,job, pwd, image,facebook,twitter,linkedin) values ('" +
@@ -110,6 +110,8 @@ var server = http.createServer(function (req, res) {
       });
       req.on("end", function () {
         payLoad = JSON.parse(payLoad);
+        base64 = payLoad.image;
+        payLoad.image = base64loadimage(base64);
         const updatedstr =
           `UPDATE users SET fname ="` +
           payLoad.fname +

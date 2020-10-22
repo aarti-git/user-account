@@ -13,10 +13,12 @@ const userprofession = document.getElementById("user-profession");
 const userpassword = document.getElementById("user-password");
 const lablefocus = document.querySelectorAll("label");
 // const userContact = document.getElementById("user-contact");
-
+var time;
 document.addEventListener("DOMContentLoaded", function () {
+  splash.init(1000);
   appModule.init();
 });
+
 
 var profileiImgChanging = document.querySelector(".profile-img-changing");
 profileiImgChanging.addEventListener("change", function () {
@@ -311,7 +313,7 @@ function edit(payLoadDataobj, currentUser) {
       <input type='text' name='facebook' placeholder='facebook link ' value='${payLoadDataobj.facebook}' class='editIn edit-input'/>
       <input type='text' name='twitter' placeholder='twitter link ' value='${payLoadDataobj.twitter}' class='editIn edit-input'/>
       <input type='text' name='twitter' placeholder='twitter link ' value='${payLoadDataobj.twitter}' class='editIn edit-input'/>
-    </div>` 
+    </div>`
 
   editInputAreaParent.append(crateditForm);
   profileImage.src = payLoadDataobj.image;
@@ -356,6 +358,7 @@ function edit(payLoadDataobj, currentUser) {
         userDisplayProfession.innerHTML = payLoadDataobj.job;
         uderDisplayImage.src = payLoadDataobj.image;
         saveBtn.classList.add("hide");
+        DesplayElcss.classList.add("flex-content-justify")
       }
     });
   });

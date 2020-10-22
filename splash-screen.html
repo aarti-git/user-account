@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="splashScreen.js"></script> -->
+    <style type="text/css">
+        .splash {
+            width: 100%;
+            height: 100vh;
+            background-color: beige;
+        }
+
+        .text {
+            font-size: 40px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="splash"></div>
+    <div class="text">hii</div>
+    <script>
+        var splashScreen = document.querySelector(".splash");
+        var text = document.querySelector(".text");
+        document.addEventListener("DOMContentLoaded", function () {
+            splash.init(1000);
+            // splash.exit();
+            setTimeout(function () {
+                splash.exit();
+            }, 2000)
+        });
+
+        const splash = {
+            isTimeoutDone: false,
+            isExited: false,
+
+            init: function (timer) {
+                var that = this;
+                this.isTimeoutDone = false;
+                this.isExited = false;
+                setTimeout(function () {
+                    that.isTimeoutDone = true;
+                    if (that.isExited == true) {
+                        that.done();
+                    }
+                }, timer);
+            },
+            exit: function () {
+                if (this.isTimeoutDone == true) {
+                    this.done();
+                    console.log("extended");
+                } else {
+                    this.isExited = true;
+                    console.log("not extended");
+                };
+            },
+            done: function () {
+                console.log("this is exited");
+                splashScreen.style.display = "none"
+                text.style.display = "block"
+
+            }
+        }
+
+        // function splashx() {
+        // }
+
+        // splashx.prototype = {
+        //     init: function () {
+        //         this.isTimeoutDone = false;
+        //         this.isExited = false;
+        //     },
+        //     exit: function () { },
+        //     done: function () { }
+        // }
+
+// use of object orianted progrming
+// esyly accsecebale any methode or property using this
+// global variable are not using in object
+
+
+
+// how to creat object : object name : splash
+// Object.create(splash);
+
+// new  keyword
+// creat object of function using new , function splashFn(){},
+// var a = new splashFn();
+
+    </script>
+</body>
+
+</html>

@@ -2,11 +2,11 @@ var appModule = {
     init: function () {
         popup.init();
         toastMessage.init();
-        // get methode
+
         $.get("http://localhost:2000/getdatabase", function (responce) {
             var result = responce.results;
-            // console.log(result.length);
-            // console.log("result : ", result);
+            var splashScreenV = document.querySelector(".splash-screen");
+            // setTimeout(function(){
             if (result.length == 0) {
                 userList.classList.add("hide");
             } else {
@@ -20,8 +20,10 @@ var appModule = {
                     creatList(payLoad);
                 }
             }
-        });
+            splash.exit();
+            // },9000);
 
+        });
         // loginform open
         var addBtn = document.querySelector(".add-btn");
         addBtn.addEventListener("click", function () {
